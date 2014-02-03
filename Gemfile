@@ -11,7 +11,7 @@ gem 'capybara'
 gem 'pry-rails'
 gem 'simplecov'
 gem 'twitter'
-
+gem 'httparty'
 
 # Gems used only for assets and not required
 # in production environments by default.

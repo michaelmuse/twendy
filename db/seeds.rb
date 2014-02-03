@@ -1,7 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# ================================
+# CREATES COUNTRIES AND ADDS WOEID
+# ================================
+
+all_countries = HTTParty.get("http://where.yahooapis.com/v1/countries?appid=Q6S.eLHV34GwNc79pswEdclgszSHyCyV7u5nb4kCEkfySEnahkUqyCEN1W1o2LsXR40GWpY")
+all_countries["places"]["place"].each do |hash|
+  Country.create(name: hash["name"], woeid: hash["woeid"])
+end

@@ -10,8 +10,12 @@ describe CountriesController do
       get :index
     end
 
+    it "should render the index page" do
+      expect(response).to render_template("index")
+    end
+
     it "retrieves all tweets" do
-      assigns(:data).keys.should == Country.all
+      assigns(:countries).should == Country.all
     end
   end
 end

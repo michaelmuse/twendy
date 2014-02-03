@@ -6,3 +6,4 @@ all_countries = HTTParty.get("http://where.yahooapis.com/v1/countries?appid=Q6S.
 all_countries["places"]["place"].each do |hash|
   Country.create(name: hash["name"], woeid: hash["woeid"])
 end
+

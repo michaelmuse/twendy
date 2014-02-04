@@ -12,21 +12,25 @@ namespace :db do
 
   desc "Generates all countries with Twitter"
   task :seed_countries => [:auth_twitter] do
-    def getCountries
-      countries = []
-      country_data = @client.trends_available
-      country_data.each do |x|
-        countries.push(x[:attrs][:country])
-      end
+    Country.delete_all
 
-      countries.uniq!.sort!.slice!(0,1)
+    countries = []
+    country_data = @client.trends_available
+    country_data.each do |x|
+      countries.push(x[:attrs][:country])
+    end
 
-      countries.each do |country|
-        coords = Geocoder.search(country)[0].data["geometry"]["location"]
-        location = @client.trends_closest({lat: coords["lat"], long: coords["lng"]})
-        woeid = location[0].attrs[:woeid]
-        Country.create(name: country, woeid: woeid)
-      end
+
+    countries.uniq!.sort!.slice!(0,1)
+
+    countries.each do |country|
+      sleep 1.0
+      coords = Geocoder.search(country)[0].data["geometry"]["location"]
+      location = @client.trends_closest({lat: coords["lat"], long: coords["lng"]})
+      woeid = location[0].attrs[:woeid]
+      puts woeid
+      puts country
+      Country.create(name: country, woeid: woeid)
     end
   end
 

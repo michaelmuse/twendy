@@ -11,23 +11,29 @@ describe Country do
     it 'should have the country saved and return the right values' do
       @countries = Country.all
       @countries.count.should == 2
+      @country_names_array = [@country_options1[:name], @country_options2[:name]]
+      @country_woeids_array = [@country_options1[:woeid], @country_options2[:woeid]]
       @countries.each do |country|
-        country.name.should == @country_options1[:name]
-        country.woeid.should == @country_options2[:woeid]
-        end
+        expect(@country_names_array).to include country.name
+        expect(@country_woeids_array).to include country.woeid
+      end
     end
-    describe 'If a trend is created for this country, the country will know about that trend' do
+    describe 'If a trend is created for this country' do
       before do
         @trend_options1 = {name: 'SuperBowl', twitter_url: 'http://twitter.com/search/?q=SuperBowl'}
         @trend_options2 = {name: 'SuperParty', twitter_url: 'http://twitter.com/search/?q=SuperParty'}
         @trend1 = Trend.create(@trend_options1)
         @trend2 = Trend.create(@trend_options2)
-        @country1.add_local_trend(trend1, time)
-        @country2.add_local_trend(trend2, time)
+        time = Time.now
+        @country1.add_local_trend(@trend1, time)
+        @country2.add_local_trend(@trend2, time)
       end
-      @countries = Country.all
-      @trends = Trend.all
-      @countries.trends.should == @trends
+      it 'the country will know about that trend' do
+        @countries = Country.all
+        @trends = Trend.all
+
+        @countries.trends.should == @trends
+      end
     end
 
   end

@@ -25,8 +25,8 @@ namespace :db do
           t.save
           @trends << t
         end
-        return @trends
       end
+      return @trends
     end
 
     countries = Country.order("trends_updated DESC")

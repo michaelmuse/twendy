@@ -1,5 +1,8 @@
-function FetchAllCountries(){
+//////// THIS SHIT AINT WORKIN!!!! -mike deal //////////
 
+
+//GET COUNTRIES FROM DATABASE
+function FetchAllCountries(){
   $.ajax({
     url: "/countries",
     type: "get",
@@ -10,40 +13,39 @@ function FetchAllCountries(){
         var country = new Country(country.name)
         var new_country_view = new CountryView(country);
       })
-
     }
   })
 }
 
+
+//COUNTRY MODEL
 var Country = function(name){
   var self = this;
   this.name = name;
 }
-
 
 var CountryView = function(model){
   var self = this; 
   this.model = model;
   this.model.view = self;
 
-  this.addEventListeners: function(){ 
+  this.addEventListeners = function(){ 
     var $country_item = self.$element.find('.country_item');
     $country_item.on("click", function(e){
       e.preventDefault();
 
 
-      console.log("You clicked "+$country_item.text()
+      console.log("You clicked "+$country_item.text)
 
-      })
-    }
+    });
   };
 
 
   this.template = function(){
     var html_array = [
-      "<li class='country_item'>",
+      "<div class='country_item'>",
         self.model.name,
-      "</li>"
+      "</div>"
     ];
     return html_array.join("")
   };
@@ -58,21 +60,22 @@ var CountryView = function(model){
   this.render();
   this.addEventListeners();
 
+
 };
 
 
-var Trend = function(){
-  var self = this;
-  this.trend_name = trend_name
-}
+// var Trend = function(){
+//   var self = this;
+//   this.trend_name = trend_name
+// }
 
 
-var TrendView = function(model){
-  var self = this;
+// var TrendView = function(model){
+//   var self = this;
 
-  this.model = model;
-  this.model.view = self;
-  }
+//   this.model = model;
+//   this.model.view = self;
+//   }
 
 
 

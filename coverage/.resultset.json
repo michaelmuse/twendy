@@ -214,6 +214,7 @@
         4,
         null,
         null,
+        null,
         null
       ],
       "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/app/models/country.rb": [
@@ -233,7 +234,7 @@
         null,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/app/models/countries_trends.rb": [
+      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/app/models/country_trend.rb": [
         1,
         1,
         1,
@@ -410,6 +411,6 @@
         null
       ]
     },
-    "timestamp": 1391482308
+    "timestamp": 1391483040
   }
 }

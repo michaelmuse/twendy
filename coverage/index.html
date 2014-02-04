@@ -14,7 +14,7 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2014-02-03T21:51:48-05:00">2014-02-03T21:51:48-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2014-02-03T22:04:00-05:00">2014-02-03T22:04:00-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -63,7 +63,7 @@
       <tr>
         <td class="strong"><a href="#57b809be227e8b844258d00166c8344dbf518729" class="src_link" title="app/controllers/countries_controller.rb">app/controllers/countries_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>8</td>
+        <td>9</td>
         <td>3</td>
         <td>3</td>
         <td>0</td>
@@ -91,16 +91,6 @@
       </tr>
       
       <tr>
-        <td class="strong"><a href="#e9c030445cf566502fbc6864642724ac379f4ca4" class="src_link" title="app/models/countries_trends.rb">app/models/countries_trends.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>5</td>
-        <td>4</td>
-        <td>4</td>
-        <td>0</td>
-        <td>1.0</td>
-      </tr>
-      
-      <tr>
         <td class="strong"><a href="#ac3b58696dd0c94bd6f79f54b9214ebf2028555b" class="src_link" title="app/models/country.rb">app/models/country.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>15</td>
@@ -108,6 +98,16 @@
         <td>8</td>
         <td>0</td>
         <td>2.4</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#054c671a623c674a0320e034909eac3469cc75c3" class="src_link" title="app/models/country_trend.rb">app/models/country_trend.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>5</td>
+        <td>4</td>
+        <td>4</td>
+        <td>0</td>
+        <td>1.0</td>
       </tr>
       
       <tr>
@@ -373,22 +373,28 @@
         <li class="covered" data-hits="4" data-linenumber="5">
           <span class="hits">4</span>
           
-          <code class="ruby">  @countries = Country.all  </code>
+          <code class="ruby">  @countries = Country.all</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="6">
           
           
-          <code class="ruby">end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
           
           
           <code class="ruby">end</code>
@@ -449,54 +455,6 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="2">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
-        <div class="source_table" id="e9c030445cf566502fbc6864642724ac379f4ca4">
-  <div class="header">
-    <h3>app/models/countries_trends.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
-    <div>
-      <b>4</b> relevant lines. 
-      <span class="green"><b>4</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class CountriesTrends &lt; ActiveRecord::Base</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  attr_accessible :country_id, :trend_id</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="3">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  belongs_to :countries</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="4">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  belongs_to :trends</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="5">
           
           
           <code class="ruby">end</code>
@@ -605,6 +563,54 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="054c671a623c674a0320e034909eac3469cc75c3">
+  <div class="header">
+    <h3>app/models/country_trend.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>4</b> relevant lines. 
+      <span class="green"><b>4</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class CountryTrend &lt; ActiveRecord::Base</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  attr_accessible :country_id, :trend_id</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  belongs_to :country</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  belongs_to :trend</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="5">
           
           
           <code class="ruby">end</code>
@@ -2473,7 +2479,7 @@
         <li class="covered" data-hits="1" data-linenumber="3">
           <span class="hits">1</span>
           
-          <code class="ruby">describe CountriesTrends do</code>
+          <code class="ruby">describe CountryTrend do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="4">
@@ -2713,7 +2719,7 @@
         <li class="covered" data-hits="1" data-linenumber="35">
           <span class="hits">1</span>
           
-          <code class="ruby">        @countries.trends.should == @trends</code>
+          <code class="ruby">        @country1.trends.should == @trends</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="36">

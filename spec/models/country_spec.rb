@@ -32,7 +32,7 @@ describe Country do
         @countries = Country.all
         @trends = Trend.all
 
-        @countries.trends.should == @trends
+        @country1.trends.should == @trends
       end
     end
 

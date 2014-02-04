@@ -10,34 +10,6 @@ namespace :db do
     end
   end
 
-
-
-  desc "Generates all countries with Twitter"
-  task :seed_countries => [:auth_twitter] do
-    Country.delete_all
-    countries = []
-    country_data = @client.trends_available
-    country_data.each do |x|
-      countries.push(x[:attrs][:country])
-    end
-
-
-    countries.uniq!.sort!.slice!(0,1)
-
-    countries.each do |country|
-      sleep 1.0
-      coords = Geocoder.search(country)[0].data["geometry"]["location"]
-      location = @client.trends_closest({lat: coords["lat"], long: coords["lng"]})
-      woeid = location[0].attrs[:woeid]
-      puts woeid
-      puts country
-      Country.create(name: country, woeid: woeid)
-    end
-  end
-
-    
-
-
   desc "Seed my trends table"
   task :seed_trends => [:auth_twitter] do
 

@@ -1,14 +1,14 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/config/environment.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/config/environment.rb": [
         null,
         1,
         null,
         null,
         1
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/config/application.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/config/application.rb": [
         1,
         null,
         null,
@@ -81,7 +81,7 @@
         null,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/config/boot.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/config/boot.rb": [
         1,
         null,
         null,
@@ -89,7 +89,7 @@
         null,
         1
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/config/environments/test.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/config/environments/test.rb": [
         1,
         null,
         null,
@@ -128,7 +128,7 @@
         1,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/config/initializers/backtrace_silencers.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/config/initializers/backtrace_silencers.rb": [
         null,
         null,
         null,
@@ -137,7 +137,7 @@
         null,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/config/initializers/inflections.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/config/initializers/inflections.rb": [
         null,
         null,
         null,
@@ -154,14 +154,14 @@
         null,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/config/initializers/mime_types.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/config/initializers/mime_types.rb": [
         null,
         null,
         null,
         null,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/config/initializers/secret_token.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/config/initializers/secret_token.rb": [
         null,
         null,
         null,
@@ -170,7 +170,7 @@
         null,
         1
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/config/initializers/session_store.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/config/initializers/session_store.rb": [
         null,
         null,
         1,
@@ -180,7 +180,7 @@
         null,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/config/initializers/wrap_parameters.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/config/initializers/wrap_parameters.rb": [
         null,
         null,
         null,
@@ -196,31 +196,34 @@
         1,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/app/controllers/application_controller.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/app/helpers/application_helper.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/app/helpers/countries_helper.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/app/helpers/countries_helper.rb": [
         1,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/app/controllers/countries_controller.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/app/controllers/countries_controller.rb": [
         1,
         null,
-        null,
         1,
+        4,
+        null,
+        4,
+        4,
         4,
         null,
         null,
         null,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/app/models/country.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/app/models/country.rb": [
         1,
         1,
         1,
@@ -241,14 +244,14 @@
         null,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/app/models/local_trending_event.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/app/models/local_trending_event.rb": [
         1,
         1,
         1,
         1,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/app/models/trend.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/app/models/trend.rb": [
         1,
         1,
         null,
@@ -258,7 +261,7 @@
         null,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/config/routes.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/config/routes.rb": [
         1,
         null,
         1,
@@ -322,7 +325,7 @@
         null,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/spec/features/trends_feature_spec.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/spec/features/trends_feature_spec.rb": [
         1,
         null,
         1,
@@ -330,7 +333,7 @@
         null,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/spec/helpers/countries_helper_spec.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/spec/helpers/countries_helper_spec.rb": [
         1,
         null,
         null,
@@ -347,7 +350,7 @@
         1,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/spec/models/country_spec.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/spec/models/country_spec.rb": [
         1,
         null,
         1,
@@ -388,7 +391,7 @@
         null,
         null
       ],
-      "/Users/michaelmuse/Documents/ga_wdi/projects/twendy/spec/models/trend_spec.rb": [
+      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/spec/models/trend_spec.rb": [
         1,
         null,
         1,
@@ -410,6 +413,6 @@
         null
       ]
     },
-    "timestamp": 1391539139
+    "timestamp": 1391540828
   }
 }

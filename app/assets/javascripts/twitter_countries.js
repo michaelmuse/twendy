@@ -1,3 +1,6 @@
+
+var countries_list = [];
+
 function Country(name) {
 	this.name = name;
 }
@@ -16,7 +19,6 @@ Countries.prototype = {
 			url: "/countries",
 			dataType: "json",
 			success: function(data) {
-				console.dir(data);
 				self.render(data);
 			},
 			error: function(data) {
@@ -25,8 +27,13 @@ Countries.prototype = {
 		});
 	},
 	render: function(data) {
-		var $li = $('li');
-		
+		var $ul = $('ul#country-list');
+		$.each(data, function(index, country) {
+			countries_list.push(country.name);
+			var $li = $('<li>');
+			$li.attr({'id': 'country'}).text(country.name);
+			$ul.append($li);
+		});
 	}
 };
 

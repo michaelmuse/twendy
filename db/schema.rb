@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140204024511) do
+ActiveRecord::Schema.define(:version => 20140204224244) do
 
   create_table "countries", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20140204024511) do
     t.datetime "time_of_trend"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "rank"
   end
 
   create_table "trends", :force => true do |t|

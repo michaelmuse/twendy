@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min.js
+//= require twitter_countries.js
+//= require world_tour.js
 //= require_tree .

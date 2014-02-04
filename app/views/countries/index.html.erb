@@ -1,6 +1,18 @@
-<h1>All countries</h1>
-<ul>
-<% @countries.each do |country| %>
-  <li><%=country.name%></li>
-  <% end %>
-</ul>
+<div id="main">
+
+  <h1>All countries</h1>
+  <ul id="country_list">
+  <% @countries.each do |country| %>
+    <li class="country_item"><%=country.name%></li>
+    <% end %>
+  </ul>
+
+
+</div>
+
+
+<!-- form helper attempt....but needs to be erbified:
+collection_select(:country, :name, Country.all, :id, :name) --> 
+
+
+

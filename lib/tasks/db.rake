@@ -14,7 +14,8 @@ namespace :db do
   task :seed_trends => [:auth_twitter] do
 
     def getTrends(woeid)
-      trend_data = @client.trends(id = woeid, options = {})
+      #CHANGE TRENDS PLACE BACK
+      trend_data = @client.trends_place(id = woeid, options = {})
       @trends = []
       trend_data.attrs[:trends].each do |trend|
         unless Trend.find_by_name(trend[:name]) ##ERROR HANDLING FOR DUPLICATES

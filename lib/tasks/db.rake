@@ -38,12 +38,16 @@ namespace :db do
 
     def getTrends(woeid)
       trend_data = @client.trends(id = woeid, options = {})
+      @trends = []
       trend_data.attrs[:trends].each do |trend|
-        t = Trend.new()
-        t.name = trend[:name]        
-        t.twitter_url = trend[:url]
-        #NEED TO SAVE WHICH COUNTRY IT BELONGS TO
-        t.save
+        unless Trend.find_by_name(trend[:name]) ##ERROR HANDLING FOR DUPLICATES
+          t = Trend.new()
+          t.name = trend[:name]        
+          t.twitter_url = trend[:url]
+          t.save
+          @trends << t
+        end
+        return @trends
       end
     end
 
@@ -51,8 +55,14 @@ namespace :db do
     current_batch = countries.pop(10)
     current_batch.each do |country|
       woeid = country.woeid
-      getTrends(woeid)
-      country.add_local_trend(trend)
+      trends = getTrends(woeid)
+      #need to iterate over array of trends
+      @curr_country = country
+      if trends
+        trends.each do |trend|
+          @curr_country.add_local_trend(trend)
+        end
+      end
       country.trends_updated = Time.now
       country.save!
     end

@@ -10,54 +10,37 @@ namespace :db do
     end
   end
 
-
-
-  desc "Generates all countries with Twitter"
-  task :seed_countries => [:auth_twitter] do
-    Country.delete_all
-    countries = []
-    country_data = @client.trends_available
-    country_data.each do |x|
-      countries.push(x[:attrs][:country])
-    end
-
-
-    countries.uniq!.sort!.slice!(0,1)
-
-    countries.each do |country|
-      sleep 1.0
-      coords = Geocoder.search(country)[0].data["geometry"]["location"]
-      location = @client.trends_closest({lat: coords["lat"], long: coords["lng"]})
-      woeid = location[0].attrs[:woeid]
-      puts woeid
-      puts country
-      Country.create(name: country, woeid: woeid)
-    end
-  end
-
-    
-
-
   desc "Seed my trends table"
   task :seed_trends => [:auth_twitter] do
 
     def getTrends(woeid)
-      trend_data = @client.trends(id = woeid, options = {})
+      #CHANGE TRENDS PLACE BACK
+      trend_data = @client.trends_place(id = woeid, options = {})
+      @trends = []
       trend_data.attrs[:trends].each do |trend|
-        t = Trend.new()
-        t.name = trend[:name]        
-        t.twitter_url = trend[:url]
-        #NEED TO SAVE WHICH COUNTRY IT BELONGS TO
-        t.save
+        unless Trend.find_by_name(trend[:name]) ##ERROR HANDLING FOR DUPLICATES
+          t = Trend.new()
+          t.name = trend[:name]        
+          t.twitter_url = trend[:url]
+          t.save
+          @trends << t
+        end
       end
+      return @trends
     end
 
     countries = Country.order("trends_updated DESC")
     current_batch = countries.pop(10)
     current_batch.each do |country|
       woeid = country.woeid
-      getTrends(woeid)
-      country.add_local_trend(trend)
+      trends = getTrends(woeid)
+      #need to iterate over array of trends
+      @curr_country = country
+      if trends
+        trends.each do |trend|
+          @curr_country.add_local_trend(trend)
+        end
+      end
       country.trends_updated = Time.now
       country.save!
     end

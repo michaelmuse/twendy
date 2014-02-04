@@ -9,7 +9,7 @@ gem 'pg'
 gem 'rspec-rails'
 gem 'capybara'
 gem 'pry-rails'
-gem 'simplecov'
+gem 'simplecov', :require => false, :group => :test
 gem 'twitter'
 gem 'httparty'
 

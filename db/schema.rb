@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20140204024511) do
     t.datetime "trends_updated"
   end
 
-  create_table "countries_trends", :force => true do |t|
+  create_table "local_trending_events", :force => true do |t|
     t.integer  "trend_id"
     t.integer  "country_id"
     t.datetime "time_of_trend"

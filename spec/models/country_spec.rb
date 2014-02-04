@@ -24,9 +24,8 @@ describe Country do
         @trend_options2 = {name: 'SuperParty', twitter_url: 'http://twitter.com/search/?q=SuperParty'}
         @trend1 = Trend.create(@trend_options1)
         @trend2 = Trend.create(@trend_options2)
-        time = Time.now
-        @country1.add_local_trend(@trend1, time)
-        @country2.add_local_trend(@trend2, time)
+        @country1.add_local_trend(@trend1)
+        @country1.add_local_trend(@trend2)
       end
       it 'the country will know about that trend' do
         @countries = Country.all

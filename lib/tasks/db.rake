@@ -10,10 +10,11 @@ namespace :db do
     end
   end
 
+
+
   desc "Generates all countries with Twitter"
   task :seed_countries => [:auth_twitter] do
     Country.delete_all
-
     countries = []
     country_data = @client.trends_available
     country_data.each do |x|

@@ -48,10 +48,11 @@ namespace :db do
     end
 
     countries = Country.order("trends_updated DESC")
-    current_batch = countries.pop(2)
+    current_batch = countries.pop(10)
     current_batch.each do |country|
       woeid = country.woeid
       getTrends(woeid)
+      country.add_local_trend(trend)
       country.trends_updated = Time.now
       country.save!
     end

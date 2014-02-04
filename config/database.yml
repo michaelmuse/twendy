@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: twendy_development
   pool: 5
-  username: 
+  username: Woodsrough
   password:
 
 test:
@@ -11,7 +11,7 @@ test:
   encoding: unicode
   database: twendy_test
   pool: 5
-  username: 
+  username: Woodsrough
   password:
 
 production:
@@ -19,5 +19,5 @@ production:
   encoding: unicode
   database: twendy_production
   pool: 5
-  username: 
+  username: Woodsrough
   password:

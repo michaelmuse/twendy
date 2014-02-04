@@ -19,7 +19,7 @@ namespace :db do
         countries.push(x[:attrs][:country])
       end
 
-      countries.uniq!sort!.slice!(0,1)
+      countries.uniq!.sort!.slice!(0,1)
 
       countries.each do |country|
         coords = Geocoder.search(country)[0].data["geometry"]["location"]

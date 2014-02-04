@@ -23,6 +23,11 @@ describe CountriesController do
       expect(@country & @country2)
     end
 
+    it 'allows countries to link to tweets'
+      def get_path('countries#show')
+      end
+    end
+
   end
 end
 

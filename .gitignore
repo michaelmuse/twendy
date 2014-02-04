@@ -22,3 +22,6 @@
 
 # Ignore all .idea files 
 .idea
+
+# Ignore database.yml
+ /config/*.yml

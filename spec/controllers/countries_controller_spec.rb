@@ -23,6 +23,10 @@ describe CountriesController do
       expect(@country & @country2)
     end
 
+    it 'should have a name' do
+      expect @country.name = 'country'
+    end
+
   end
 end
 

@@ -4,7 +4,7 @@
 
 Country.delete_all
 
-@client = Twitter::REST::Client.new do |config|
+client = Twitter::REST::Client.new do |config|
   config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
   config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
   config.access_token        = ENV['TWITTER_ACCESS_TOKEN']
@@ -12,7 +12,7 @@ Country.delete_all
 end
 
 countries = []
-country_data = @client.trends_available
+country_data = client.trends_available
 country_data.each do |x|
   countries.push(x[:attrs][:country])
 end
@@ -24,6 +24,9 @@ countries.each do |country|
   url_country = country.gsub(" ", "%20")
   pull = HTTParty.get("http://where.yahooapis.com/v1/places.q(#{url_country})?appid=#{id}")
   woeid = pull["places"]["place"]["woeid"]
+  puts "======================"
+  puts "#{country} // #{woeid}"
+  puts "======================"
   Country.create(name: country, woeid: woeid)
 end
 

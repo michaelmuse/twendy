@@ -10,6 +10,20 @@ namespace :db do
     end
   end
 
+  desc "Generates all countries with Twitter"
+  task :twitter_countries => [:auth_twitter] do
+    def getCountries
+      countries = []
+      country_data = @client.trends_available
+      country_data.each do |x|
+        countries.push(x[:attrs][:country])
+      end
+      countries.uniq.sort.save!
+    end
+
+    
+
+
   desc "Seed my trends table"
   task :seed_trends => [:auth_twitter] do
 

@@ -18,8 +18,8 @@ namespace :db do
       trend_data = @client.trends_place(id = woeid, options = {})
       @trends = {}
       trend_data.attrs[:trends].each_with_index do |trend, index|
-        trend = Trend.find_by_name(trend[:name])
-        if trend ##ERROR HANDLING FOR DUPLICATES
+        trend_target = Trend.find_by_name(trend[:name]) || false
+        if trend_target ##ERROR HANDLING FOR DUPLICATES
           @trends[(index+1).to_s.to_sym] = trend
         else
           t = Trend.new()

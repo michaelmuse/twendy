@@ -24,12 +24,15 @@ describe Country do
         @rank2 = 2
         @trend_options1 = {name: 'SuperBowl', twitter_url: 'http://twitter.com/search/?q=SuperBowl'}
         @trend_options2 = {name: 'SuperParty', twitter_url: 'http://twitter.com/search/?q=SuperParty'}
+        @trend_options3 = {name: 'SuperGame', twitter_url: 'http://twitter.com/search/?q=SuperGame'}
         @trend1 = Trend.create(@trend_options1)
         @trend2 = Trend.create(@trend_options2)
+        @trend3 = Trend.create(@trend_options3)
         @curr_time = Time.now
         @old_time = @curr_time - 500000
         @country1.add_local_trend(@trend1, @rank1, @curr_time)
         @country1.add_local_trend(@trend2, @rank2, @old_time)
+        @country1.add_local_trend(@trend3, @rank2, @curr_time)
       end
       it 'the country will know about that trend' do
         @countries = Country.all
@@ -43,6 +46,10 @@ describe Country do
       end
       it 'will know when its most recent cohort of trends were imported' do
         @country1.get_latest_trends_timing.should == @curr_time
+      end
+      it 'can request all the trends from its most recent cohort time object' do
+        curr_trends_array = LocalTrendingEvent.where(time_of_trend: @curr_time)
+        @country1.get_cohort_of_trends(@curr_time).should == curr_trends_array
       end
     end
   end

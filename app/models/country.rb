@@ -21,4 +21,8 @@ class Country < ActiveRecord::Base
     return LocalTrendingEvent.order("time_of_trend desc").limit(1).first.time_of_trend
   end
 
+  def get_cohort_of_trends(curr_time)
+
+  end
+
 end

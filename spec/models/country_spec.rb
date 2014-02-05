@@ -53,4 +53,20 @@ describe Country do
       end
     end
   end
+  describe 'given multiple countries in the database' do
+    before do 
+      @country_options1 = {name: 'Worldwide', woeid: 1}
+      @country_options2 = {name: 'NotWorldwide', woeid: 2}
+      @country1 = Country.create(@country_options1)
+      @country2 = Country.create(@country_options2)
+      @trend1 = Trend.create{name: "cranberries", twitter_url: "www.google.com"}
+      @trend2 = Trend.create{name: "thistrendisshared", twitter_url: "www.google.com"}
+      @joiner1 = LocalTrendingEvent.create(country_id: 1, trend_id: 1, rank: 5)
+      @joiner2 = LocalTrendingEvent.create(country_id: 1, trend_id: 2 , rank: 3)
+      @joiner3 = LocalTrendingEvent.create(country_id: 2, trend_id: 1, rank: 4)
+      @joiner4 = LocalTrendingEvent.create(country_id: 2, trend_id: 1, rank: 3)
+    it 'will know about other countries which share a selected trend'
+
+    end
+  end
 end

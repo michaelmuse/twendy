@@ -17,13 +17,13 @@ namespace :db do
       #CHANGE TRENDS PLACE BACK
       trend_data = @client.trends_place(id = woeid, options = {})
       @trends = {}
-      trend_data.attrs[:trends].each_with_index do |index, trend|
+      trend_data.attrs[:trends].each_with_index do |trend, index|
         unless Trend.find_by_name(trend[:name]) ##ERROR HANDLING FOR DUPLICATES
           t = Trend.new()
           t.name = trend[:name]        
           t.twitter_url = trend[:url]
           t.save
-          @trends[(index+1).to_sym] = t
+          @trends[(index+1).to_s.to_sym] = t
         end
       end
       return @trends

@@ -13,3 +13,26 @@
  *= require bootstrap-theme.min.css
  *= require_tree .
  */
+
+body {
+	position: relative;
+  background: white;
+}
+canvas {
+  position: absolute;
+  top: 120px;
+  left: 0;
+}
+.blur {
+  -webkit-filter: blur(6px);
+  filter: blur(6px);
+}
+li {
+	list-style: none;
+	font-size: 18px;
+	width: 160px;
+}
+li:hover {
+	color: red;
+	cursor: pointer;
+}

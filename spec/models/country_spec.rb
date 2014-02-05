@@ -20,12 +20,14 @@ describe Country do
     end
     describe 'If a trend is created for this country' do
       before do
+        @rank1 = 1
+        @rank2 = 2
         @trend_options1 = {name: 'SuperBowl', twitter_url: 'http://twitter.com/search/?q=SuperBowl'}
         @trend_options2 = {name: 'SuperParty', twitter_url: 'http://twitter.com/search/?q=SuperParty'}
         @trend1 = Trend.create(@trend_options1)
         @trend2 = Trend.create(@trend_options2)
-        @country1.add_local_trend(@trend1)
-        @country1.add_local_trend(@trend2)
+        @country1.add_local_trend(@trend1, @rank1)
+        @country1.add_local_trend(@trend2, @rank2)
       end
       it 'the country will know about that trend' do
         @countries = Country.all

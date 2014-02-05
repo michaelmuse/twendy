@@ -213,11 +213,11 @@
         1,
         null,
         1,
-        4,
+        0,
         null,
-        4,
-        4,
-        4,
+        0,
+        0,
+        0,
         null,
         null,
         null,
@@ -231,10 +231,11 @@
         null,
         1,
         1,
-        12,
+        4,
         null,
         null,
         1,
+        2,
         2,
         2,
         2,
@@ -326,14 +327,6 @@
         null,
         null
       ],
-      "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/spec/features/trends_feature_spec.rb": [
-        1,
-        null,
-        1,
-        null,
-        null,
-        null
-      ],
       "/Users/michaeldeal/Documents/ga_wdi/projects/twendy/spec/helpers/countries_helper_spec.rb": [
         1,
         null,
@@ -380,6 +373,8 @@
         1,
         1,
         1,
+        1,
+        1,
         null,
         1,
         1,
@@ -418,10 +413,6 @@
         null
       ]
     },
-<<<<<<< HEAD
-    "timestamp": 1391540828
-=======
-    "timestamp": 1391549381
->>>>>>> 6a2946ecb4d049fd0b4a32244518d64c79a8ec05
+    "timestamp": 1391559167
   }
 }

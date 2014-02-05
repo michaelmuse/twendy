@@ -14,18 +14,33 @@
  *= require_tree .
  */
 
+html {
+	background: rgb(245,245,245);
+}
 body {
+}
+.top-header-container {
+	background: rgb(117,170,235);
+	color: white;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 60px;
+}
+#globus {
 	position: relative;
-  background: white;
 }
 canvas {
   position: absolute;
-  top: 120px;
+  top: 0;
   left: 0;
 }
 .blur {
   -webkit-filter: blur(6px);
   filter: blur(6px);
+}
+ul {
+	position: absolute;
 }
 li {
 	list-style: none;

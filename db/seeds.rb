@@ -30,3 +30,4 @@ countries.each do |country|
   Country.create(name: country, woeid: woeid)
 end
 
+Country.create(name: "Worldwide", woeid: 1)

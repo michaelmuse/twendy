@@ -16,14 +16,14 @@ namespace :db do
     def getTrends(woeid)
       #CHANGE TRENDS PLACE BACK
       trend_data = @client.trends_place(id = woeid, options = {})
-      @trends = []
-      trend_data.attrs[:trends].each do |trend|
+      @trends = {}
+      trend_data.attrs[:trends].each_with_index do |index, trend|
         unless Trend.find_by_name(trend[:name]) ##ERROR HANDLING FOR DUPLICATES
           t = Trend.new()
           t.name = trend[:name]        
           t.twitter_url = trend[:url]
           t.save
-          @trends << t
+          @trends[(index+1).to_sym] = t
         end
       end
       return @trends
@@ -37,8 +37,8 @@ namespace :db do
       #need to iterate over array of trends
       @curr_country = country
       if trends
-        trends.each do |trend|
-          @curr_country.add_local_trend(trend)
+        trends.each do |rank, trend|
+          @curr_country.add_local_trend(trend, rank)
         end
       end
       country.trends_updated = Time.now

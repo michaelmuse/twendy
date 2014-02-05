@@ -8,11 +8,12 @@ class Country < ActiveRecord::Base
       self.trends_updated = Time.now
     end
 
-  def add_local_trend(trend)
+  def add_local_trend(trend, rank)
     lte = LocalTrendingEvent.new()
     lte.time_of_trend = Time.now
     lte.trend_id = trend.id
     lte.country_id = self.id
+    lte.rank = rank
     lte.save
   end
 

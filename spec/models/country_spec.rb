@@ -69,4 +69,22 @@ describe Country do
 
     end
   end
+      @country1 = Country.create(name: 'Worldwide', woeid: 1)
+      @country2 = Country.create(name: 'NotWorldwide', woeid: 2)
+      @trend1 = Trend.create(name: "cranberries", twitter_url: "www.google.com")
+      @trend2 = Trend.create(name: "thistrendisshared", twitter_url: "www.google.com")
+      @joiner1 = LocalTrendingEvent.create(country_id: 1, trend_id: 1, rank: 5, time_of_trend: Time.now-50000)
+      @joiner2 = LocalTrendingEvent.create(country_id: 1, trend_id: 2 , rank: 3, time_of_trend: Time.now-40000)
+      @joiner3 = LocalTrendingEvent.create(country_id: 2, trend_id: 1, rank: 4, time_of_trend: Time.now-30000)
+      @joiner4 = LocalTrendingEvent.create(country_id: 2, trend_id: 1, rank: 3, time_of_trend: Time.now-20000)
+    end
+    it 'will know about other countries which share a selected trend' do
+      @country1.find_overlapping_countries(@trend1.id).should include(@country2)
+      @country1.find_overlapping_countries(@trend2.id).should_not include(@country2)
+    end
+    it 'will know about previous time units with the same trend' do
+      @country2.find_past_trends(@trend1.id).should include(@trend1)
+    end
+  end
+
 end

@@ -5,4 +5,11 @@ class Trend < ActiveRecord::Base
   has_many :countries, through: :local_trending_events
   has_many :local_trending_events
 
+  def fetch_by_trend(id)
+  	trends = LocalTrendingEvent.find_by_trend_id(id)
+  	trends.each do |trend|
+  		
+  	end
+  end
+
 end

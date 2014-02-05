@@ -6,10 +6,11 @@ class Trend < ActiveRecord::Base
   has_many :local_trend_events
 
   def fetch_by_trend(id)
-  	trends = LocalTrendingEvent.find_by_trend_id(id)
-  	trends.each do |trend|
-  		
-  	end
+  	lte_trends = LocalTrendingEvent.where("trend_id = #{id}")
+    lte_trends.each do |lte_trend|
+      Trend.find(lte_trend.trend_id)
   end
+
+
 
 end

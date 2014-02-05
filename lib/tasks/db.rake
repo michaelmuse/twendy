@@ -20,7 +20,7 @@ namespace :db do
       trend_data.attrs[:trends].each_with_index do |trend, index|
         trend_target = Trend.find_by_name(trend[:name]) || false
         if trend_target ##ERROR HANDLING FOR DUPLICATES
-          @trends[(index+1).to_s.to_sym] = trend
+          @trends[(index+1).to_s.to_sym] = trend_target
         else
           t = Trend.new()
           t.name = trend[:name]        
@@ -40,8 +40,9 @@ namespace :db do
       #need to iterate over array of trends
       @curr_country = country
       if trends
+        @time = Time.now
         trends.each do |rank, trend|
-          @curr_country.add_local_trend(trend, rank)
+          @curr_country.add_local_trend(trend, rank.to_s.to_i, @time)
         end
       end
       country.trends_updated = Time.now

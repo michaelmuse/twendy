@@ -18,7 +18,7 @@ describe Country do
         expect(@country_woeids_array).to include country.woeid
       end
     end
-    describe 'If a trend is created for this country' do
+    describe 'If trends are created for this country at different times' do
       before do
         @rank1 = 1
         @rank2 = 2
@@ -26,8 +26,10 @@ describe Country do
         @trend_options2 = {name: 'SuperParty', twitter_url: 'http://twitter.com/search/?q=SuperParty'}
         @trend1 = Trend.create(@trend_options1)
         @trend2 = Trend.create(@trend_options2)
-        @country1.add_local_trend(@trend1, @rank1)
-        @country1.add_local_trend(@trend2, @rank2)
+        @curr_time = Time.now
+        @old_time = @curr_time - 500000
+        @country1.add_local_trend(@trend1, @rank1, @curr_time)
+        @country1.add_local_trend(@trend2, @rank2, @old_time)
       end
       it 'the country will know about that trend' do
         @countries = Country.all
@@ -35,7 +37,13 @@ describe Country do
 
         @country1.trends.should == @trends
       end
+      it 'will have created a time in the LocalTrendingEvent objects' do
+        @localtrendingevent1 = LocalTrendingEvent.all.first
+        @localtrendingevent1.time_of_trend.should == @curr_time
+      end
+      it 'will know when its most recent cohort of trends were imported' do
+        @country1.get_latest_trends_timing.should == @curr_time
+      end
     end
-
   end
 end

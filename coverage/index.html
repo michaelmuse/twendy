@@ -14,27 +14,27 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2014-02-04T21:01:30-05:00">2014-02-04T21:01:30-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2014-02-04T21:04:01-05:00">2014-02-04T21:04:01-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">97.18%</span></span>
+    (<span class="covered_percent"><span class="green">95.89%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.9
+         1.87
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>21</b> files in total.
-    <b>142</b> relevant lines. 
-    <span class="green"><b>138</b> lines covered</span> and
-    <span class="red"><b>4</b> lines missed </span>
+    <b>146</b> relevant lines. 
+    <span class="green"><b>140</b> lines covered</span> and
+    <span class="red"><b>6</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -94,10 +94,10 @@
         <td class="strong"><a href="#ac3b58696dd0c94bd6f79f54b9214ebf2028555b" class="src_link" title="app/models/country.rb">app/models/country.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>28</td>
-        <td>17</td>
-        <td>17</td>
+        <td>18</td>
+        <td>18</td>
         <td>0</td>
-        <td>5.4</td>
+        <td>5.2</td>
       </tr>
       
       <tr>
@@ -112,12 +112,12 @@
       
       <tr>
         <td class="strong"><a href="#f807e78301a6b8ab6b0562b0b3278449cafcfbee" class="src_link" title="app/models/trend.rb">app/models/trend.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>9</td>
-        <td>5</td>
-        <td>5</td>
-        <td>0</td>
-        <td>1.0</td>
+        <td class="red strong">75.0 %</td>
+        <td>15</td>
+        <td>8</td>
+        <td>6</td>
+        <td>2</td>
+        <td>0.8</td>
       </tr>
       
       <tr>
@@ -467,8 +467,8 @@
     <h3>app/models/country.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>17</b> relevant lines. 
-      <span class="green"><b>17</b> lines covered</span> and
+      <b>18</b> relevant lines. 
+      <span class="green"><b>18</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -617,13 +617,13 @@
         <li class="covered" data-hits="1" data-linenumber="24">
           <span class="hits">1</span>
           
-          <code class="ruby">  def get_cohort_of_trends(curr_time)</code>
+          <code class="ruby">  def get_cohort_of_trends(time)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="25">
+        <li class="covered" data-hits="1" data-linenumber="25">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">    return LocalTrendingEvent.where(time_of_trend: time)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="26">
@@ -699,11 +699,11 @@
         <div class="source_table" id="f807e78301a6b8ab6b0562b0b3278449cafcfbee">
   <div class="header">
     <h3>app/models/trend.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
+    <h4><span class="red">75.0 %</span> covered</h4>
     <div>
-      <b>5</b> relevant lines. 
-      <span class="green"><b>5</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <b>8</b> relevant lines. 
+      <span class="green"><b>6</b> lines covered</span> and
+      <span class="red"><b>2</b> lines missed.</span>
     </div>
   </div>
   
@@ -752,13 +752,49 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="8">
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def fetch_by_trend(id)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="9">
+          
+          
+          <code class="ruby">  	trends = LocalTrendingEvent.find_by_trend_id(id)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="10">
+          
+          
+          <code class="ruby">  	trends.each do |trend|</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby">  		</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby">  	end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="14">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="9">
+        <li class="never" data-hits="" data-linenumber="15">
           
           
           <code class="ruby">end</code>

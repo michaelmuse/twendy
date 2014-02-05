@@ -37,5 +37,4 @@ class Country < ActiveRecord::Base
     # this method allows the country to search its past to find repeating trends.
     return self.trends.where('trend_id = #{trend_id}')
   end
-
 end

@@ -1,6 +1,4 @@
 
-var countries_list = [];
-
 function Trend(name, twitter_url, created_at) {
 	this.name = name;
 	this.twitter_url = twitter_url;
@@ -18,12 +16,19 @@ TrendsList.prototype = {
 		// COMPLETE FETCH
 	},
 	render: function() {
-		var $ul = $('<ul>');
-		$.each(this.trends, function(index, trend) {
-			var $li = $('<li>').attr({'class', 'trend'}).text(trend.name);
+		var self = this;
+		var $ul = $('<ul>').attr({'class': 'trends-list'});
+		$.each(self.trends, function(index, trend) {
+			var $li = $('<li>').attr({'class': 'trend'}).text(trend.name);
 			$ul.append($li);
+			$('ul#country-list').empty();
+			$('#main').append($ul);
 		});
 	}
+}
+
+function TrendsView() {
+
 }
 
 function Country(name, woeid, trends_updated) {
@@ -47,7 +52,8 @@ CountriesList.prototype = {
 			dataType: "json",
 			success: function(data) {
 				$.each(data, function(index, country) {
-					self.add(new Country(country.name, country.woeid, country.trends_updated))
+					var new_country = new Country(country.name, country.woeid, country.trends_updated);
+					self.add(new_country)
 				});
 				self.render();
 				self.addHandlers();
@@ -71,10 +77,11 @@ CountriesList.prototype = {
 			var self = this;
 			$.ajax({
 				method: "get",
-				url: "/countries",
+				url: "/countries/id",
 				dataType: "json",
-				data: {country: self.textContent},
+				data: { name: self.textContent },
 				success: function(data) {
+					console.dir(data);
 					var trends_list = new TrendsList;
 					$.each(data, function(index, trend) {
 						var new_trend = new Trend(trend.name, trend.twitter_url, trend.created_at);
@@ -89,6 +96,11 @@ CountriesList.prototype = {
 		})
 	}
 }
+
+// function ListView() {
+// 	this.list = new CountriesList;
+// }
+
 
 var countries = new CountriesList;
 

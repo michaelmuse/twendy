@@ -48,8 +48,12 @@ li {
 	list-style: none;
 	font-size: 18px;
 	width: 160px;
+	color: rgb(200,200,200);
 }
 li:hover {
 	color: red;
 	cursor: pointer;
+}
+.trends-list {
+	float: right;
 }

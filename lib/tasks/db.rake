@@ -18,7 +18,10 @@ namespace :db do
       trend_data = @client.trends_place(id = woeid, options = {})
       @trends = {}
       trend_data.attrs[:trends].each_with_index do |trend, index|
-        unless Trend.find_by_name(trend[:name]) ##ERROR HANDLING FOR DUPLICATES
+        trend = Trend.find_by_name(trend[:name])
+        if trend ##ERROR HANDLING FOR DUPLICATES
+          @trends[(index+1).to_s.to_sym] = trend
+        else
           t = Trend.new()
           t.name = trend[:name]        
           t.twitter_url = trend[:url]

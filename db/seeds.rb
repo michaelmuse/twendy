@@ -27,7 +27,16 @@ countries.each do |country|
   puts "======================"
   puts "#{country} // #{woeid}"
   puts "======================"
-  Country.create(name: country, woeid: woeid)
+  if Country.where(name: country, woeid: woeid) == []
+    Country.create(name: country, woeid: woeid)
+  else
+    puts "=#{country} already exists="    
+  end
 end
 
-Country.create(name: "Worldwide", woeid: 1)
+if Country.where(name: "Worldwide", woeid: 1) == []
+  Country.create(name: "Worldwide", woeid: 1)
+else
+  puts "=Worldwide already exists="
+end
+

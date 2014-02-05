@@ -18,16 +18,21 @@ describe Country do
         expect(@country_woeids_array).to include country.woeid
       end
     end
-    describe 'If a trend is created for this country' do
+    describe 'If trends are created for this country at different times' do
       before do
         @rank1 = 1
         @rank2 = 2
         @trend_options1 = {name: 'SuperBowl', twitter_url: 'http://twitter.com/search/?q=SuperBowl'}
         @trend_options2 = {name: 'SuperParty', twitter_url: 'http://twitter.com/search/?q=SuperParty'}
+        @trend_options3 = {name: 'SuperGame', twitter_url: 'http://twitter.com/search/?q=SuperGame'}
         @trend1 = Trend.create(@trend_options1)
         @trend2 = Trend.create(@trend_options2)
-        @country1.add_local_trend(@trend1, @rank1)
-        @country1.add_local_trend(@trend2, @rank2)
+        @trend3 = Trend.create(@trend_options3)
+        @curr_time = Time.now
+        @old_time = @curr_time - 500000
+        @country1.add_local_trend(@trend1, @rank1, @curr_time)
+        @country1.add_local_trend(@trend2, @rank2, @old_time)
+        @country1.add_local_trend(@trend3, @rank2, @curr_time)
       end
       it 'the country will know about that trend' do
         @countries = Country.all
@@ -35,7 +40,37 @@ describe Country do
 
         @country1.trends.should == @trends
       end
+      it 'will have created a time in the LocalTrendingEvent objects' do
+        @localtrendingevent1 = LocalTrendingEvent.all.first
+        @localtrendingevent1.time_of_trend.should == @curr_time
+      end
+      it 'will know when its most recent cohort of trends were imported' do
+        @country1.get_latest_trends_timing.should == @curr_time
+      end
+      it 'can request all the trends from its most recent cohort time object' do
+        curr_trends_array = LocalTrendingEvent.where(time_of_trend: @curr_time)
+        @country1.get_cohort_of_trends(@curr_time).should == curr_trends_array
+      end
     end
-
   end
+  describe 'given multiple countries in the database' do
+    before do 
+      @country1 = Country.create(name: 'Worldwide', woeid: 1)
+      @country2 = Country.create(name: 'NotWorldwide', woeid: 2)
+      @trend1 = Trend.create(name: "cranberries", twitter_url: "www.google.com")
+      @trend2 = Trend.create(name: "thistrendisshared", twitter_url: "www.google.com")
+      @joiner1 = LocalTrendingEvent.create(country_id: 1, trend_id: 1, rank: 5, time_of_trend: Time.now-50000)
+      @joiner2 = LocalTrendingEvent.create(country_id: 1, trend_id: 2 , rank: 3, time_of_trend: Time.now-40000)
+      @joiner3 = LocalTrendingEvent.create(country_id: 2, trend_id: 1, rank: 4, time_of_trend: Time.now-30000)
+      @joiner4 = LocalTrendingEvent.create(country_id: 2, trend_id: 1, rank: 3, time_of_trend: Time.now-20000)
+    end
+    it 'will know about other countries which share a selected trend' do
+      @country1.find_overlapping_countries(@trend1.id).should include(@country2)
+      @country1.find_overlapping_countries(@trend2.id).should_not include(@country2)
+    end
+    it 'will know about previous time units with the same trend' do
+      @country2.find_past_trends(@trend1.id).should include(@trend1)
+    end
+  end
+
 end

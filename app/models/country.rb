@@ -4,14 +4,14 @@ class Country < ActiveRecord::Base
   has_many :local_trending_events
 
   before_create :set_trends_updated_to_now
+  
   validates_uniqueness_of :name
 
+  def set_trends_updated_to_now
+    self.trends_updated = Time.now
+  end
 
-    def set_trends_updated_to_now
-      self.trends_updated = Time.now
-    end
-
-  def add_local_trend(trend, rank, time)
+  def self.add_local_trend(trend, rank, time)
     lte = LocalTrendingEvent.new()
     lte.time_of_trend = time
     lte.trend_id = trend.id
@@ -20,11 +20,11 @@ class Country < ActiveRecord::Base
     lte.save
   end
 
-  def get_latest_trends_timing
+  def self.get_latest_trends_timing
     return LocalTrendingEvent.order("time_of_trend desc").limit(1).first.time_of_trend
   end
 
-  def get_cohort_of_trends(time)
+  def self.get_cohort_of_trends(time)
     return LocalTrendingEvent.where(time_of_trend: time)
   end
 

@@ -10,7 +10,7 @@ function globus(error, world, names) {
 
 	var auto_rotate = true;
 
-	var width = height = 660,
+	var width = height = 600,
 	    start = Date.now(),
 	    title = d3.select("h1");
 

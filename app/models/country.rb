@@ -4,6 +4,9 @@ class Country < ActiveRecord::Base
   has_many :local_trending_events
 
   before_create :set_trends_updated_to_now
+  
+  validates_uniqueness_of :name
+
   def set_trends_updated_to_now
     self.trends_updated = Time.now
   end
@@ -23,6 +26,16 @@ class Country < ActiveRecord::Base
 
   def self.get_cohort_of_trends(time)
     return LocalTrendingEvent.where(time_of_trend: time)
+  end
+
+  def find_overlapping_countries(trend_id)
+    # this method begins from a country's list of trends and finds all countries which share that trend, it could go in the Trend model.
+    return Trend.find(trend_id).countries
+  end
+
+  def find_past_trends(trend_id)
+    # this method allows the country to search its past to find repeating trends.
+    return self.trends.where('trend_id = #{trend_id}')
   end
 
 end

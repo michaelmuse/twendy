@@ -32,8 +32,9 @@ namespace :db do
       return @trends
     end
 
+
     countries = Country.order("trends_updated DESC")
-    current_batch = countries.pop(10)
+    current_batch = countries.pop(7) #changed from 10 to 7 to work with heroku request limit.
     current_batch.each do |country|
       woeid = country.woeid
       trends = getTrends(woeid)

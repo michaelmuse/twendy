@@ -18,6 +18,9 @@
 /log/*.log
 /tmp
 
+# Ignore the simplecov files:
+/coverage/
+
 # Ignore all .DS_Store files 
 .DS_Store
 

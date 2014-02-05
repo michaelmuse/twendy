@@ -15,17 +15,19 @@
  */
 
 html {
-	background: rgb(245,245,245);
+	background: rgb(40,40,40);
 }
 body {
 }
 .top-header-container {
+	background: rgb(255,255,255);
 	background: rgb(117,170,235);
 	color: white;
 	padding: 0;
 	margin: 0;
 	width: 100%;
-	height: 60px;
+	height: 100px;
+	box-shadow: 0 2px 2px rgba(0,0,0,.2);
 }
 #globus {
 	position: relative;

@@ -9,4 +9,9 @@ class CountriesController < ApplicationController
     end
 	end
 
+	def show
+		@country = Country.find_by_name(params[:name])
+		
+	end
+
 end

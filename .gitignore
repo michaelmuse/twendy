@@ -19,7 +19,7 @@
 /tmp
 
 # Ignore the simplecov files:
-/coverage/*
+/coverage/*.json
 
 # Ignore all .DS_Store files 
 .DS_Store
@@ -27,3 +27,6 @@
 # Ignore all .idea files 
 .idea
 .gitignore
+
+
+  

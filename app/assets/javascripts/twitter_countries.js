@@ -93,7 +93,6 @@ CountriesListView.prototype = {
 				dataType: "json",
 				data: { name: self.textContent },
 				success: function(data) {
-					alert("SUCCESS");
 					console.dir(data);
 					var trends_list = new TrendsList;
 					$.each(data, function(index, trend) {

@@ -40,7 +40,7 @@ describe Country do
         @countries = Country.all
         @trends = Trend.all
 
-        @worldwide.trends.should == @trends
+        @worldwide.trends.should include(@trends[0], @trends[1], @trends[2])
       end
       it 'will have created a time in the LocalTrendingEvent objects' do
         @localtrendingevent1 = LocalTrendingEvent.all.first
@@ -50,15 +50,17 @@ describe Country do
         @worldwide.get_latest_trends_timing.should == @curr_time
       end
       it 'can request all the trends from its most recent cohort time object' do
-        curr_trends_array = LocalTrendingEvent.where(time_of_trend: @curr_time)
-        @worldwide.get_cohort_of_trends(@curr_time).should == curr_trends_array
+        curr_lte_array = LocalTrendingEvent.where(time_of_trend: @curr_time)
+        cohort_of_trends_gotten = @worldwide.get_cohort_of_trends(@curr_time).first[:time_of_trend]
+        expect(cohort_of_trends_gotten).to eq(curr_lte_array[0].time_of_trend)
       end
       it 'will know about other countries which share a selected trend' do
         @worldwide.find_overlapping_countries(@trend1.id).should include(@notWorldWide)
         @worldwide.find_overlapping_countries(@trend2.id).should_not include(@notWorldWide)
       end
       it 'will know attributes of the same trend historically' do
-        @worldwide.find_past_attrs_for_trend(@trend1.id).should include()
+        old_lte = LocalTrendingEvent.where(trend_id: @trend1.id, time_of_trend: @old_time).first
+        @worldwide.find_past_attrs_for_trend(@trend1.id).should include(old_lte)
       end
     end
   end

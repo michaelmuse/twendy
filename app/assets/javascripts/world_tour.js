@@ -24,7 +24,7 @@ function globus(error, world, names) {
 	var canvas1 = d3.select("#globus").append("canvas"),
 	    canvas2 = d3.select("#globus").append("canvas").attr("class", "blur"),
 	    canvas3 = d3.select("#globus").append("canvas"),
-	    canvasB = d3.select("#globus").append("canvas");
+	    canvasB = d3.select("#globus").append("canvas").on("click", function() {alert("CLICK");});;
 
 	d3.selectAll("canvas").attr("width", width).attr("height", height);
 

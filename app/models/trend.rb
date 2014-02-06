@@ -5,4 +5,15 @@ class Trend < ActiveRecord::Base
   has_many :countries, through: :local_trending_events
   has_many :local_trending_events
 
+
+
+
+#############################################################
+######## MICHAEL MUSE SANDBOX
+
+
+
+#############################################################
+
+
 end

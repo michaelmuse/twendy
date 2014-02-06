@@ -101,7 +101,13 @@ class CountriesController < ApplicationController
         #if the trend didnt exist at this interval
         else
           line[:name] = trend.name
-          line[:trend] = 0
+          index = []
+          @latest_trends_array.each_with_index do |latesttrend, idx|
+            if latesttrend.id == trend.id
+              index << idx+1
+            end
+          end
+          line[:trend] = index.first
           line[:rank] = 0
         end
         curr_trend_lines << line
@@ -117,6 +123,7 @@ class CountriesController < ApplicationController
       @alllines << tenlines
         puts "=======new interval========"
     end
+
 ####ENDING JSON TREND HISTORY CREATION####################################
 
 		respond_to do |format|

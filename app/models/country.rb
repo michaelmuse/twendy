@@ -42,17 +42,14 @@ class Country < ActiveRecord::Base
 
   def get_cohort_of_trends(time)
     if time.length > 1
-      data = []
+      legion = []
       time.each do |time_obj|
         # for each time_of_trend object passed, the function will create a cohort of trend events.
         return_array = LocalTrendingEvent.where(country_id: self.id, time_of_trend: time_obj)
         # return_array is a collection of pseudo-trend join-table objects
         return_array.each do |lte|
           data.push({name: lte.trend.name, trend_id: lte.trend_id, time_of_trend: lte.time_of_trend, rank: lte.rank})
-
-          # ADD TREND INDEX / NAME / RANK
           # SEPARATE COHORTS
-          # 
         end
       end
     else

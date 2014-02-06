@@ -1,8 +1,8 @@
 
-function Trend(name, twitter_url, time_of_trend, rank) {
+function Trend(name, index, interval, rank) {
 	this.name = name;
-	this.twitter_url = twitter_url;
-	this.created_at = time_of_trend;
+	this.index = index;
+	this.interval = interval;
 	this.rank = rank;
 }
 
@@ -22,8 +22,8 @@ TrendsList.prototype = {
 			dataType: "json",
 			data: { name: country_name },
 			success: function(data) {
-				$.each(data, function(index, trend) {
-					var new_trend = new Trend(trend.name, trend.twitter_url, trend.time_of_trend, trend.rank);
+				$.each(data, function(i, trend) {
+					var new_trend = new Trend(trend.name, trend.index, trend.interval, trend.rank);
 					self.add(new_trend);
 				});
 				self.trends_list_view.render(self.trends);
@@ -48,6 +48,8 @@ TrendsListView.prototype = {
 		// 	$('ul#country-list').empty(); // empty the country's list
 		// 	$('#main').append($ul);
 		// });
+		console.dir(trends);
+
 		$('ul#country-list').empty(); // empty the country's list
 		$('#globus').remove();
 

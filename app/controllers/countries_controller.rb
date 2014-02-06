@@ -117,11 +117,13 @@ class CountriesController < ApplicationController
       @alllines << tenlines
         puts "=======new interval========"
     end
+    #@alllines.flatten!
 ####ENDING JSON TREND HISTORY CREATION####################################
+    #binding.pry
 
 		respond_to do |format|
       format.html
-      format.json { render :json => @alllines.to_json }
+      format.json { render :json => @alllines.flatten.to_json }
     end
 	end
 

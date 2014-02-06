@@ -5,11 +5,10 @@ class LocalTrendingEvent < ActiveRecord::Base
   belongs_to :trend
 
 #############################################################
-######## MICHAEL MUSE SANDBOX
 
-def get_trend
-  Trend.find(self.trend_id)
-end
+  def get_trend
+    Trend.find(self.trend_id)
+  end
 
 #############################################################
 

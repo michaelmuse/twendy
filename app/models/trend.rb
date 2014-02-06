@@ -9,7 +9,6 @@ class Trend < ActiveRecord::Base
 
 
 #############################################################
-######## MICHAEL MUSE SANDBOX
 
 
 

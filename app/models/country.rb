@@ -101,12 +101,8 @@ class Country < ActiveRecord::Base
 
 
 #############################################################
-######## MICHAEL MUSE SANDBOX
-
-def get_latest_cohort_ltes(time)
-  return LocalTrendingEvent.where(country_id: self.id, time_of_trend: time)
-end 
-
-
+  def get_latest_cohort_ltes(time)
+    return LocalTrendingEvent.where(country_id: self.id, time_of_trend: time)
+  end 
 #############################################################
 end

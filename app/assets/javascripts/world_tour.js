@@ -82,16 +82,16 @@ function globus(error, world, names) {
     all_countries = allCountries(countries);
 
     // click handle for a user input subbmition
-    var country;
-    document.getElementById("submit-search-country").onclick = function() {
-			var input = document.getElementById("country");
-			var index = all_countries.indexOf(input.value);
-			if (index > -1) {
-				country = assignCountryObject(countries, all_countries[index]);
-				auto_rotate = false;
-			}
-			input.value = "";
-		};
+    // var country;
+    // document.getElementById("submit-search-country").onclick = function() {
+		// 	var input = document.getElementById("country");
+		// 	var index = all_countries.indexOf(input.value);
+		// 	if (index > -1) {
+		// 		country = assignCountryObject(countries, all_countries[index]);
+		// 		auto_rotate = false;
+		// 	}
+		// 	input.value = "";
+		// };
 
 		// click handle for every country on the list
 		var list = document.getElementsByTagName("li");

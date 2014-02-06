@@ -96,12 +96,12 @@ class CountriesController < ApplicationController
             end
           end
           index.uniq!
-          line[:index] = index.first
+          line[:trend] = index.first
           line[:rank] = lte_for_curr_trend_at_this_interval.first.rank
         #if the trend didnt exist at this interval
         else
           line[:name] = trend.name
-          line[:index] = 0
+          line[:trend] = 0
           line[:rank] = 0
         end
         curr_trend_lines << line

@@ -25,6 +25,16 @@ class Country < ActiveRecord::Base
     return LocalTrendingEvent.where(country_id: self.id).order("time_of_trend desc").limit(1).first.time_of_trend
   end
 
+  def get_trends_times(selection)
+    return_array = LocalTrendingEvent.where(country_id: self.id).order("time_of_trend desc")
+    times_array = []
+    return_array.each do |lte|
+      data.push(lte.time_of_trend)
+    end
+    times_array.uniq!
+    return times_array[0 .. selection.to_i]
+  end
+
   def get_cohort_of_trends(time)
     return_array = LocalTrendingEvent.where(country_id: self.id, time_of_trend: time)
     data = []

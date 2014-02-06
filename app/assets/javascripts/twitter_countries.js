@@ -1,8 +1,9 @@
 
-function Trend(name, twitter_url, created_at) {
+function Trend(name, twitter_url, time_of_trend, rank) {
 	this.name = name;
 	this.twitter_url = twitter_url;
-	this.created_at = created_at;
+	this.created_at = time_of_trend;
+	this.rank = rank;
 }
 
 function TrendsList() {
@@ -27,10 +28,6 @@ TrendsList.prototype = {
 	}
 }
 
-function TrendsView() {
-
-}
-
 function Country(name, woeid, trends_updated) {
 	this.name = name;
 	this.woeid = woeid;
@@ -44,7 +41,7 @@ CountriesList.prototype = {
 	add: function(country) {
 		this.countries.push(country);
 	},
-	fetch: function() {
+	fetch: function(success) {
 		var self = this;
 		$.ajax({
 			method: "get",
@@ -55,18 +52,33 @@ CountriesList.prototype = {
 					var new_country = new Country(country.name, country.woeid, country.trends_updated);
 					self.add(new_country)
 				});
-				self.render();
-				self.addHandlers();
+				success();
 			},
 			error: function(data) {
 				console.log("Failed to connect to the database.");
 			}
 		});
-	},
-	render: function() {
+	}
+}
+
+function CountriesListView(){
+	this.collection = new CountriesList;
+
+	// bypassing lexical scope to seperate concerns
+	var self = this;
+	var success = function() {
+		self.render();
+		self.addHandlers();
+	};
+
+	this.collection.fetch(success);
+}
+
+CountriesListView.prototype = { 
+		render: function() {
 		var self = this;
 		var $ul = $('ul#country-list');
-		$.each(this.countries, function(index, country) {
+		$.each(this.collection.countries, function(index, country) {
 			var $li = $('<li>');
 			$li.attr({'id': 'country'}).text(country.name);
 			$ul.append($li);
@@ -84,7 +96,7 @@ CountriesList.prototype = {
 					console.dir(data);
 					var trends_list = new TrendsList;
 					$.each(data, function(index, trend) {
-						var new_trend = new Trend(trend.name, trend.twitter_url, trend.created_at);
+						var new_trend = new Trend(trend.name, trend.twitter_url, trend.time_of_trend, trend.rank);
 						trends_list.add(new_trend);
 					});
 					trends_list.render();
@@ -97,13 +109,6 @@ CountriesList.prototype = {
 	}
 }
 
-// function ListView() {
-// 	this.list = new CountriesList;
-// }
-
-
-var countries = new CountriesList;
-
 $(function() {
-  countries.fetch();
+  new CountriesListView;
 });

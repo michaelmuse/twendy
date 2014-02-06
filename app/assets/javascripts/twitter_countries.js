@@ -1,5 +1,5 @@
 
-function Trend(name, index, interval, rank) {
+function Trend(name, trend, interval, rank) {
 	this.name = name;
 	this.index = index;
 	this.interval = interval;
@@ -22,8 +22,8 @@ TrendsList.prototype = {
 			dataType: "json",
 			data: { name: country_name },
 			success: function(data) {
-				$.each(data, function(i, trend) {
-					var new_trend = new Trend(trend.name, trend.index, trend.interval, trend.rank);
+				$.each(data, function(index, trend) {
+					var new_trend = new Trend(trend.name, trend.trend, trend.interval, trend.rank);
 					self.add(new_trend);
 				});
 				self.trends_list_view.render(self.trends);

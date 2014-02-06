@@ -1,7 +1,7 @@
 class CountriesController < ApplicationController
 
 	def index
-		@countries = Country.all
+		@countries = Country.order("name ASC")
 
 	  respond_to do |format|
       format.html

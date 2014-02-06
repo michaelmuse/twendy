@@ -24,7 +24,7 @@ function globus(error, world, names) {
 	var canvas1 = d3.select("#globus").append("canvas"),
 	    canvas2 = d3.select("#globus").append("canvas").attr("class", "blur"),
 	    canvas3 = d3.select("#globus").append("canvas"),
-	    canvasB = d3.select("#globus").append("canvas");
+	    canvasB = d3.select("#globus").append("canvas").on("click", function() {alert("CLICK");});;
 
 	d3.selectAll("canvas").attr("width", width).attr("height", height);
 
@@ -217,7 +217,7 @@ function renderCountriesList() {
 // will hold all countries names
 var all_countries;
 
-window.onload = function() {
+$(function() {
 	var element = document.createElement("div");
 	element.id = "globus";
 	element.className = "container col-md-6 col-md-offset-3";
@@ -227,4 +227,4 @@ window.onload = function() {
 	  .defer(d3.json, "world-110m.json")
 	  .defer(d3.tsv, "world-country-names.tsv")
 	  .await(globus);
-}
+});

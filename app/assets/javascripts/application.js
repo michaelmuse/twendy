@@ -15,4 +15,5 @@
 //= require bootstrap.min.js
 //= require twitter_countries.js
 //= require world_tour.js
+//= require trendsD3.js
 //= require_tree .

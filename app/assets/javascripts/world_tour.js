@@ -217,7 +217,7 @@ function renderCountriesList() {
 // will hold all countries names
 var all_countries;
 
-window.onload = function() {
+$(function() {
 	var element = document.createElement("div");
 	element.id = "globus";
 	element.className = "container col-md-6 col-md-offset-3";
@@ -227,4 +227,4 @@ window.onload = function() {
 	  .defer(d3.json, "world-110m.json")
 	  .defer(d3.tsv, "world-country-names.tsv")
 	  .await(globus);
-}
+});

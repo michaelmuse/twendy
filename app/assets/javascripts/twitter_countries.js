@@ -8,23 +8,53 @@ function Trend(name, twitter_url, time_of_trend, rank) {
 
 function TrendsList() {
 	this.trends = [];
+	this.trends_list_view = new TrendsListView;	
 }
 TrendsList.prototype = {
 	add: function(trend) {
 		this.trends.push(trend);
 	},
 	fetch: function(country_name) {
-		// COMPLETE FETCH
-	},
-	render: function() {
 		var self = this;
-		var $ul = $('<ul>').attr({'class': 'trends-list'});
-		$.each(self.trends, function(index, trend) {
-			var $li = $('<li>').attr({'class': 'trend'}).text(trend.name);
-			$ul.append($li);
-			$('ul#country-list').empty();
-			$('#main').append($ul);
+		$.ajax({
+			method: "get",
+			url: "/countries/id",
+			dataType: "json",
+			data: { name: country_name },
+			success: function(data) {
+				$.each(data, function(index, trend) {
+					var new_trend = new Trend(trend.name, trend.twitter_url, trend.time_of_trend, trend.rank);
+					self.add(new_trend);
+				});
+				self.trends_list_view.render(self.trends);
+			},
+			error: function(data) {
+				console.log("Failed to connect to the database.");
+			}
 		});
+	}
+}
+
+function TrendsListView(){
+	var self = this;
+}
+
+TrendsListView.prototype = { 
+	render: function(trends) {
+		// var $ul = $('<ul>').attr({'class': 'trends-list'});
+		// $.each(trends, function(index, trend) {
+		// 	var $li = $('<li>').attr({'class': 'trend'}).text(trend.name);
+		// 	$ul.append($li);
+		// 	$('ul#country-list').empty(); // empty the country's list
+		// 	$('#main').append($ul);
+		// });
+		$('ul#country-list').empty(); // empty the country's list
+		$('#globus').remove();
+
+		$div = $('div').attr({'id': 'chart'});
+		$('#main').append($div);
+
+		trendsD3([],trendsD3_result);
 	}
 }
 
@@ -63,19 +93,18 @@ CountriesList.prototype = {
 
 function CountriesListView(){
 	this.collection = new CountriesList;
+	this.trends_list = new TrendsList;
 
 	// bypassing lexical scope to seperate concerns
 	var self = this;
 	var success = function() {
 		self.render();
-		self.addHandlers();
 	};
-
 	this.collection.fetch(success);
 }
 
 CountriesListView.prototype = { 
-		render: function() {
+	render: function() {
 		var self = this;
 		var $ul = $('ul#country-list');
 		$.each(this.collection.countries, function(index, country) {
@@ -83,29 +112,13 @@ CountriesListView.prototype = {
 			$li.attr({'id': 'country'}).text(country.name);
 			$ul.append($li);
 		});
+		self.addHandlers();
 	},
 	addHandlers: function() {
+		var self = this;
 		$('li#country').on('click', function(event) {
-			var self = this;
-			$.ajax({
-				method: "get",
-				url: "/countries/id",
-				dataType: "json",
-				data: { name: self.textContent },
-				success: function(data) {
-					console.dir(data);
-					var trends_list = new TrendsList;
-					$.each(data, function(index, trend) {
-						var new_trend = new Trend(trend.name, trend.twitter_url, trend.time_of_trend, trend.rank);
-						trends_list.add(new_trend);
-					});
-					trends_list.render();
-				},
-				error: function(data) {
-					console.log("Failed to connect to the database.");
-				}
-			});
-		})
+			self.trends_list.fetch(this.textContent);
+		});
 	}
 }
 

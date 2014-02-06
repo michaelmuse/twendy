@@ -123,7 +123,15 @@ class CountriesController < ApplicationController
       @alllines << tenlines
         puts "=======new interval========"
     end
-    #@alllines.flatten!
+
+    @alllines.each_with_index do |cohort, index|
+      cohort.each do |obj|
+        obj[:interval] = index+1
+      end
+    end
+
+    @alllines.flatten!
+
 ####ENDING JSON TREND HISTORY CREATION####################################
     #binding.pry
 

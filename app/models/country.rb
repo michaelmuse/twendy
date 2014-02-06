@@ -30,7 +30,7 @@ class Country < ActiveRecord::Base
 # =========================================
 
   def get_trends_times(selection)
-    # this is get_latest_trends_timing but for a sellection of times -- it will allow the user to search for cohorts of trends over time as opposed to a single snapshot. This method can replace get_latest_trends_timing: it will return howevermany time objects are specified by the parameter.
+    # this is get_latest_trends_timing but for a selection of times -- it will allow the user to search for cohorts of trends over scalable time as opposed to a single snapshot. It may replace get_latest_trends_timing as it will return howevermany time-objects specified by the parameter.
     return_array = LocalTrendingEvent.where(country_id: self.id).order("time_of_trend desc")
     times_array = []
     return_array.each do |lte|
@@ -60,7 +60,7 @@ class Country < ActiveRecord::Base
   end
 
   def find_overlapping_countries(trend_id)
-    # this method begins from a country's list of trends and finds all countries which share that trend, it could go in the Trend model.
+    # this method begins from a country's list of trends and finds all countries which share that trend, it could go in the Trend model and is somewhat illogical considering that get_cohort_of_trends() now may return a matrix of cohorts.
     return Trend.find(trend_id).countries
   end
 

@@ -88,7 +88,7 @@ class CountriesController < ApplicationController
         puts "#{lte_for_curr_trend_at_this_interval}"
         #if the trend existed at this interval
         unless lte_for_curr_trend_at_this_interval == []
-          line[:trend_name] = trend.name
+          line[:name] = trend.name
           index = []
           @latest_trends_array.each_with_index do |latesttrend, idx|
             if latesttrend.id == trend.id
@@ -96,12 +96,12 @@ class CountriesController < ApplicationController
             end
           end
           index.uniq!
-          line[:trend_index] = index.first
+          line[:index] = index.first
           line[:rank] = lte_for_curr_trend_at_this_interval.first.rank
         #if the trend didnt exist at this interval
         else
-          line[:trend_name] = trend.name
-          line[:trend_index] = 0
+          line[:name] = trend.name
+          line[:index] = 0
           line[:rank] = 0
         end
         curr_trend_lines << line

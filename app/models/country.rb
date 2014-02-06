@@ -37,29 +37,29 @@ class Country < ActiveRecord::Base
       times_array.push(lte.time_of_trend)
     end
     times_array.uniq!
-    return times_array[0 .. selection.to_i]
+    return times_array[0..selection.to_i]
   end
 
   def get_cohort_of_trends(time)
+    legion = []
     if time.length > 1
-      legion = []
       time.each do |time_obj|
-        # for each time_of_trend object passed, the function will create a cohort of trend events.
-        return_array = LocalTrendingEvent.where(country_id: self.id, time_of_trend: time_obj)
+        cohort = []
+        return_array = LocalTrendingEvent.where(country_id: self.id, time_of_trend: time_obj).order("trend_id asc")
         # return_array is a collection of pseudo-trend join-table objects
         return_array.each do |lte|
-          data.push({name: lte.trend.name, trend_id: lte.trend_id, time_of_trend: lte.time_of_trend, rank: lte.rank})
-          # SEPARATE COHORTS
+          cohort.push({name: lte.trend.name, trend_id: lte.trend_id, time_of_trend: lte.time_of_trend, rank: lte.rank})
         end
+        legion.push(cohort)
       end
     else
       return_array = LocalTrendingEvent.where(country_id: self.id, time_of_trend: time)
-      data = []
       return_array.each do |lte|
-        data.push({name: lte.trend.name, trend_id: lte.trend_id, time_of_trend: lte.time_of_trend, rank: lte.rank})
+        cohort.push({name: lte.trend.name, trend_id: lte.trend_id, time_of_trend: lte.time_of_trend, rank: lte.rank})
       end
+      legion.push(cohort)
     end
-    return data
+    return legion
   end
 
   def find_overlapping_countries(trend_id)
@@ -67,8 +67,30 @@ class Country < ActiveRecord::Base
     return Trend.find(trend_id).countries
   end
 
-  def find_past_attrs_for_trend(trend_id)
-    # this method allows the country to search for past instances given a trend.
+  # def find_past_attrs_for_trend(legion)
+  #   if legion.length > 1
+  #     compare_cohort = []
+  #     first_cohort = legion[0]
+  #     first_cohort.each do |maniple|
+  #       compare_cohort.push(maniple[:trend_id])
+  #     end
+  #     remaining_cohorts = legion[1..legion.length]
+  #     remaining_cohorts.each do |thingy|
+  #       compare_legionaires = []
+  #         thingy.each do |maniple|
+  #           compare_legionaires.push(maniple[:trend_id])
+  #     end
+  #     compare_legionaires.map do |t_id|
+  #       unless compare_cohort.include?(t_id)
+  #         thingy[0][:rank] = 0
+  #         binding.pry
+  #       end
+  #     end
+  #   end
+  # end
+
+  def find_past_attrs_for_trend(trend)
+  # this method allows the country to search for past instances given a trend.
     return_array = LocalTrendingEvent.where(trend_id: trend_id, country_id: self.id)
     data = []
     return_array.each do |lte|

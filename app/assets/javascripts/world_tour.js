@@ -218,9 +218,11 @@ function renderCountriesList() {
 var all_countries;
 
 $(function() {
-	var element = document.createElement("div");
-	element.id = "globus";
-	document.body.appendChild(element);
+	var $page = document.getElementById("page"),
+	    $element = document.createElement("div");
+	$element.id = "globus";
+	$element.className = "centered";
+	$page.appendChild($element);
 
 	queue()
 	  .defer(d3.json, "world-110m.json")

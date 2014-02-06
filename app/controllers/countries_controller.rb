@@ -129,7 +129,7 @@ class CountriesController < ApplicationController
         obj[:interval] = index+1
       end
     end
-
+    @alllines = @alllines[0..11]
     @alllines.flatten!
 
 ####ENDING JSON TREND HISTORY CREATION####################################

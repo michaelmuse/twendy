@@ -30,7 +30,7 @@ class Country < ActiveRecord::Base
 # =========================================
 
   def get_trends_times(selection)
-    # this is get_latest_trends_timing but for a selection of times -- it will allow the user to search for cohorts of trends over scalable time as opposed to a single snapshot. It may replace get_latest_trends_timing as it will return howevermany time-objects specified by the parameter.
+    # this is get_latest_trends_timing but for a selection of times -- it will allow the user to search for cohorts of trends over scalable time as opposed to a single snapshot. It may replace get_latest_trends_timing as it will return however many time-objects specified by the parameter.
     return_array = LocalTrendingEvent.where(country_id: self.id).order("time_of_trend desc")
     times_array = []
     return_array.each do |lte|
@@ -42,18 +42,24 @@ class Country < ActiveRecord::Base
 
   def get_cohort_of_trends(time)
     if time.length > 1
+      data = []
       time.each do |time_obj|
+        # for each time_of_trend object passed, the function will create a cohort of trend events.
         return_array = LocalTrendingEvent.where(country_id: self.id, time_of_trend: time_obj)
-        data = []
+        # return_array is a collection of pseudo-trend join-table objects
         return_array.each do |lte|
-          data.push({name: lte.trend.name, twitter_url: lte.trend.twitter_url, time_of_trend: lte.time_of_trend, rank: lte.rank})
+          data.push({name: lte.trend.name, trend_id: lte.trend_id, time_of_trend: lte.time_of_trend, rank: lte.rank})
+
+          # ADD TREND INDEX / NAME / RANK
+          # SEPARATE COHORTS
+          # 
         end
       end
     else
       return_array = LocalTrendingEvent.where(country_id: self.id, time_of_trend: time)
       data = []
       return_array.each do |lte|
-        data.push({name: lte.trend.name, twitter_url: lte.trend.twitter_url, time_of_trend: lte.time_of_trend, rank: lte.rank})
+        data.push({name: lte.trend.name, trend_id: lte.trend_id, time_of_trend: lte.time_of_trend, rank: lte.rank})
       end
     end
     return data

@@ -1,7 +1,7 @@
 
 function Trend(name, trend, interval, rank) {
 	this.name = name;
-	this.index = index;
+	this.trend = trend;
 	this.interval = interval;
 	this.rank = rank;
 }

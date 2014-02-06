@@ -20,26 +20,41 @@ class Country < ActiveRecord::Base
     lte.save
   end
 
+# =========================================
+# THIS METHOD'S FUNCTIONS ARE NOW REDUNDANT
   def get_latest_trends_timing
     # Trolls the db looking for most recent trending events for the country upon which the method is called; returns the time of last seed.
     return LocalTrendingEvent.where(country_id: self.id).order("time_of_trend desc").limit(1).first.time_of_trend
   end
+# SUPERSEDED BY GET_TRENDS_TIMES(SELECTION)
+# =========================================
 
   def get_trends_times(selection)
+    # this is get_latest_trends_timing but for a sellection of times -- it will allow the user to search for cohorts of trends over time as opposed to a single snapshot. This method can replace get_latest_trends_timing: it will return howevermany time objects are specified by the parameter.
     return_array = LocalTrendingEvent.where(country_id: self.id).order("time_of_trend desc")
     times_array = []
     return_array.each do |lte|
-      data.push(lte.time_of_trend)
+      times_array.push(lte.time_of_trend)
     end
     times_array.uniq!
     return times_array[0 .. selection.to_i]
   end
 
   def get_cohort_of_trends(time)
-    return_array = LocalTrendingEvent.where(country_id: self.id, time_of_trend: time)
-    data = []
-    return_array.each do |lte|
-      data.push({name: lte.trend.name, twitter_url: lte.trend.twitter_url, time_of_trend: lte.time_of_trend, rank: lte.rank})
+    if time.length > 1
+      time.each do |time_obj|
+        return_array = LocalTrendingEvent.where(country_id: self.id, time_of_trend: time_obj)
+        data = []
+        return_array.each do |lte|
+          data.push({name: lte.trend.name, twitter_url: lte.trend.twitter_url, time_of_trend: lte.time_of_trend, rank: lte.rank})
+        end
+      end
+    else
+      return_array = LocalTrendingEvent.where(country_id: self.id, time_of_trend: time)
+      data = []
+      return_array.each do |lte|
+        data.push({name: lte.trend.name, twitter_url: lte.trend.twitter_url, time_of_trend: lte.time_of_trend, rank: lte.rank})
+      end
     end
     return data
   end

@@ -220,7 +220,6 @@ var all_countries;
 $(function() {
 	var element = document.createElement("div");
 	element.id = "globus";
-	element.className = "container col-md-6 col-md-offset-3";
 	document.body.appendChild(element);
 
 	queue()

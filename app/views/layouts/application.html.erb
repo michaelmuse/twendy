@@ -11,28 +11,11 @@
 </head>
 <body>
 	<div id="page">
-		<div class="top-header-container container col-lg-12">
-			<header class="container col-lg-8 col-md-offset-2">
-			</header>
-		</div>
-
-		<div class="container col-md-8 col-md-offset-2">
 		
-			<div class="row">
-			  <div class="col-lg-6">
-			    <div class="input-group">
-			      <input id="search-country" type="text" class="form-control" name="country" placeholder="Search a country...">
-			      <span class="input-group-btn">
-			        <button id="submit-search-country" class="btn btn-default" type="button">Go!</button>
-			      </span>
-			    </div><!-- /input-group -->
-			  </div><!-- /.col-lg-6 -->
-			</div><!-- /.row -->
+		<div class="main-container container col-lg-12">
+				<%= yield %>
+		</div><!-- main-container -->
 
-			<%= yield %>
-			
-		</div>
-  </div>
-
+  </div><!-- page -->
 </body>
 </html>

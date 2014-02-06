@@ -10,9 +10,23 @@ class CountriesController < ApplicationController
 	end
 
 	def show
-		country = Country.find_by_name(params[:name])
-		time = country.get_latest_trends_timing
-		@trends = country.get_cohort_of_trends(time)
+
+		@trends = [
+			{ :name => "What's up?!", :twitter_url => "http://www.google.com", :created_at => Time.now.getutc },
+			{ :name => "What's up?!", :twitter_url => "http://www.google.com", :created_at => Time.now.getutc },
+			{ :name => "What's up?!", :twitter_url => "http://www.google.com", :created_at => Time.now.getutc },
+			{ :name => "What's up?!", :twitter_url => "http://www.google.com", :created_at => Time.now.getutc },
+			{ :name => "What's up?!", :twitter_url => "http://www.google.com", :created_at => Time.now.getutc },
+			{ :name => "What's up?!", :twitter_url => "http://www.google.com", :created_at => Time.now.getutc },
+			{ :name => "What's up?!", :twitter_url => "http://www.google.com", :created_at => Time.now.getutc },
+			{ :name => "What's up?!", :twitter_url => "http://www.google.com", :created_at => Time.now.getutc }
+		]
+
+		# binding.pry
+
+		# country = Country.find_by_name(params[:name])
+		# time = country.get_latest_trends_timing
+		# @trends = country.get_cohort_of_trends(time)
 
 		respond_to do |format|
       format.html

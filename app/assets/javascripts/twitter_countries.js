@@ -47,13 +47,10 @@ TrendsListView.prototype = {
 
 		$chart.fadeTo(200,.1);
 		$chart.empty();
-
-		setTimeout(function() {
-      // Do something after 4 seconds
-      trendsD3([],trends);
-			$chart.fadeTo(200, 1);
-    }, 3000);
-
+		
+		trendsD3([],trends);
+		$chart.fadeTo(200, 1);
+		
 		var curr_trends = [];
 		$.each(trends, function(index, trend) {
 			if (trend.interval === 1) curr_trends.push(trend.name);

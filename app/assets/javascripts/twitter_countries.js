@@ -41,7 +41,19 @@ function TrendsListView(){
 
 TrendsListView.prototype = { 
 	render: function(trends) {
-		
+		// console.log(trends);
+		var curr_trends = [];
+		trends.forEach(function(trend){
+			trend.interval === 1 ? curr_trends.push(trend.name) : console.log("item removed")
+		});
+		console.log(curr_trends);
+		var $ul = $('#trend-list');
+		$.each(curr_trends, function(index, trend) {
+			var $li = $('<li>').attr({'class': 'trend'}).text(trend);
+			$ul.append($li);
+			$('ul#country-list').empty(); // empty the country's list
+			$('#main').append($ul);
+		});
 		//$('#globus').remove();
 
 		// $div = $('div').attr({'id': 'chart'});

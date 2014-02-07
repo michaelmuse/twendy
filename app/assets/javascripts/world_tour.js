@@ -1,4 +1,5 @@
 var countries_list = [];
+var auto_rotate = true;
 
 // suffle any given array
 function shuffle(arr) {
@@ -7,8 +8,6 @@ function shuffle(arr) {
 };
 
 function globus(error, world, names) {
-
-	var auto_rotate = true;
 
 	var width = height = 2000,
 	    start = Date.now(),
@@ -103,10 +102,10 @@ function globus(error, world, names) {
 		var list = document.getElementsByTagName("li");
 		for (var i=0; i < list.length; i++) {
 			list[i].onclick = function(event) {
+				auto_rotate = false;
 				var index = all_countries.indexOf(checkCountryName(event.target.innerHTML));
 				if (index > -1) {
 					country = assignCountryObject(countries, all_countries[index]);
-					auto_rotate = false;
 				}
 			};
 		}

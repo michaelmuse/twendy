@@ -44,24 +44,22 @@ TrendsListView.prototype = {
 
 		var $globus = $('canvas'),
         $chart  = $('#chart'),
-        $ul = $('#trend-list');
-
-    $chart.empty();
-    $temp = $ul.find('li');
-    $temp.remove();
+        $ul = $('.trend-container ul');
 
 		trendsD3([],trends);
-		$chart.fadeTo(1500, 1);
+		$chart.fadeTo(1000, 0);
+		$chart.fadeTo(1000, 1);
 		
 		var curr_trends = [];
 		$.each(trends, function(index, trend) {
 			(trend.interval === 1) ? curr_trends.push(trend.name) : console.log("item removed");
 		});
+		curr_trends = curr_trends.slice(-10,-1);
 
+		$ul.empty();
 		$.each(curr_trends, function(index, trend) {
 			var $li = $('<li>').attr({'class': 'trend'}).text(trend);
 			$ul.append($li);
-			$('#main').append($ul);
 		});
 	}
 }

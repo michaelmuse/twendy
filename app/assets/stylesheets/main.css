@@ -41,7 +41,7 @@ canvas {
   height: 80px;
 }
 #country-list {
-	height:100%;
+	height: 80%;
  	min-height:700px;
  	overflow:hidden;
  	overflow-y: scroll;

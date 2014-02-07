@@ -1,6 +1,12 @@
 html {
 	background: rgb(40,40,40);
 }
+body {
+  overflow: hidden;
+}
+h1 {
+  text-align: center;
+}
 #globus {
 	position: relative;
 }

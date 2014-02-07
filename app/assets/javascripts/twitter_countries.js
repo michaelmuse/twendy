@@ -52,30 +52,8 @@ TrendsListView.prototype = {
 
 		trendsD3([],trends);
 
-		// function clicked(d) {
-		//   var x, y, k;
-
-		//   if (d && centered !== d) {
-		//     var centroid = path.centroid(d);
-		//     x = centroid[0];
-		//     y = centroid[1];
-		//     k = 4;
-		//     centered = d;
-		//   } else {
-		//     x = width / 2;
-		//     y = height / 2;
-		//     k = 1;
-		//     centered = null;
-		//   }
-
-		//   g.selectAll("path")
-		//       .classed("active", centered && function(d) { return d === centered; });
-
-		  
-
-
 		$globus.animate({}, 0, function() {
-			$chart.fadeTo(3000, 1);
+			$chart.fadeTo(1500, 1);
 		});
 		var curr_trends = [];
 		trends.forEach(function(trend){

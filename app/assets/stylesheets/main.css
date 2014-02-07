@@ -16,7 +16,6 @@ canvas {
   -webkit-filter: blur(6px);
   filter: blur(6px);
 }
-
 .header-container {
   height: 100px;
 }
@@ -29,10 +28,10 @@ canvas {
 .trend-list {
   line-height: 5;
 }
-
-ul {
-	position: absolute;
+#chart {
+  opacity: 0;
 }
+
 li {
 	list-style: none;
 	font-size: 18px;
@@ -42,15 +41,4 @@ li {
 li:hover {
 	color: red;
 	cursor: pointer;
-}
-
-
-/* classes */
-
-.centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-top: -50px;
-  margin-left: -100px;
 }

@@ -16,7 +16,7 @@ function globus(error, world, names) {
 
 	var projection = d3.geo.orthographic()
 	    .translate([width / 2, height / 2])
-	    .precision(.5);
+	    .precision(.95);
 
 	var globe = {type: "Sphere"};
 	var graticule = d3.geo.graticule();

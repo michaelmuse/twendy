@@ -49,6 +49,7 @@ TrendsListView.prototype = {
 		trendsD3([],trends);
 
 		$chart.fadeTo(500, 0);
+		$chart.empty();
 		$chart.fadeTo(500, 1);
 		
 		var curr_trends = [];

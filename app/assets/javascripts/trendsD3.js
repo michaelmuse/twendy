@@ -23,7 +23,7 @@ trendsD3_colors = [
     trendsD3_legendElementWidth = trendsD3_gridSize * 2;
 
 function trendsD3(error, data) {
-
+    // shuffle(trendsD3_result)
     var d = data,
         margin = trendsD3_margin,
         width = trendsD3_width,

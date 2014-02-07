@@ -134,6 +134,9 @@ function globus(error, world, names) {
   		    	(auto_rotate) ? country = countries[j] : title.text(country.name);
           } while (twitterCountriesArr.indexOf(country.name) == -1)
           i = j;
+
+          $('header h1').text(country.name);
+
 		      var p = d3.geo.centroid(country),
 		          r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]);
 		      

@@ -7,7 +7,6 @@ var
     // trendsD3_colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58","red"], // alternatively colorbrewer.YlGnBu[9]
     // trendsD3_colors = ["hsla(56,55%,85%,.8)","#61c4b2","#77c79f","#89ca8c","#a8b778","#c0a265","#d38b52","#dc7840","#e56230","#ef4623"], // alternatively colorbrewer.YlGnBu[9]
 trendsD3_colors = [ 
-  'hsla(56,55%,85%,.8)',
   '#e56230',
   '#dc7840',
   '#d38b52',
@@ -16,11 +15,14 @@ trendsD3_colors = [
   '#89ca8c',
   '#77c79f',
   '#61c4b2',
-  '#45c1c4'];
+  '#45c1c4',
+  '#45a9c4',
+  'hsla(56,55%,85%,.3)'
+];
   trendsD3_intervals = ["Now", "-2 hours", "-4 hr", "-6 hr", "-10 hr", "-12 hr", "-14 hr", "-16 hr", "-18 hr", "-20 hr", "-22 hr", "-24 hr"],
     trendsD3_trends = ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"],
     trendsD3_gridSize = Math.floor(trendsD3_width / trendsD3_intervals.length),
-    trendsD3_legendElementWidth = trendsD3_gridSize * 2;
+    trendsD3_legendElementWidth = trendsD3_gridSize;
 
 function trendsD3(error, data) {
     // shuffle(trendsD3_result)
@@ -36,7 +38,7 @@ function trendsD3(error, data) {
         legendElementWidth = trendsD3_legendElementWidth;
 
     var colorScale = d3.scale.quantile()
-        .domain([0, buckets - 1, d3.max(data, function (d) { return d.rank; })])
+        .domain([0, 6, d3.max(data, function (d) { return d.rank; })])
         .range(colors);
 
     // build the chart
@@ -80,8 +82,6 @@ function trendsD3(error, data) {
         .attr("width", gridSize-2)
         .attr("height", gridSize-2);
 
-    (d.rank == 0) ? heatMap.style("fill", 'orange') : heatMap.style("fill", colors[0]);
-
     heatMap.transition().duration(1400)
         .style("fill", function(d) { return colorScale(d.rank); });
 
@@ -102,7 +102,7 @@ function trendsD3(error, data) {
 
     legend.append("text")
       .attr("class", "mono")
-      .text(function(d, i) { return "rank ≥ " + Math.round(i); })
+      .text(function(d, i) { return (i < 10) ? "rank " + Math.round(i+1) : "Not Ranked"; })
       .attr("x", function(d, i) { return legendElementWidth * i; })
       .attr("y", height + gridSize);
 }

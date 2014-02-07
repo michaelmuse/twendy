@@ -108,7 +108,7 @@ class CountriesController < ApplicationController
             end
           end
           line[:trend] = index.first
-          line[:rank] = 0
+          line[:rank] = 11
         end
         curr_trend_lines << line
       end

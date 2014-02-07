@@ -25,10 +25,8 @@ h4 {
 }
 canvas {
   position: absolute;
-  /*top: -60%;
-  left: -13%;*/
-  top: -92%;
-  left: -23%;
+  top: -60%;
+  left: -13%;
   margin-top: -50px;
   margin-left: -100px;
   z-index: -999;

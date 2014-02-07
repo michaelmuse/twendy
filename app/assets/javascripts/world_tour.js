@@ -9,7 +9,7 @@ function shuffle(arr) {
 
 function globus(error, world, names) {
 
-	var width = height = 2000,
+	var width = height = 2500,
 	    start = Date.now(),
 	    title = d3.select("h1");
 
@@ -117,10 +117,12 @@ function globus(error, world, names) {
 
     // where the action taking place
     (function transition() {
+    	var self = d3;
 	    d3.transition()
 		  	.duration(1250)
 		    .each("start", function() {
-		      title.text(countries[i = (i + 1) % n].name);
+		    	i = (i + 1) % n;
+		      //title.text(countries[i = (i + 1) % n].name);
 		    })
 		    .tween("rotate", function() {
 
@@ -134,6 +136,9 @@ function globus(error, world, names) {
   		    	(auto_rotate) ? country = countries[j] : title.text(country.name);
           } while (twitterCountriesArr.indexOf(country.name) == -1)
           i = j;
+
+					$('header h1').text(country.name);
+
 		      var p = d3.geo.centroid(country),
 		          r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]);
 		      

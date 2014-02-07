@@ -17,7 +17,7 @@ trendsD3_colors = [
   '#61c4b2',
   '#45c1c4',
   '#45a9c4',
-  'hsla(56,55%,85%,.3)'
+  'hsla(56,55%,85%,.8)'
 ];
   trendsD3_intervals = ["Now", "-2 hours", "-4 hr", "-6 hr", "-10 hr", "-12 hr", "-14 hr", "-16 hr", "-18 hr", "-20 hr", "-22 hr", "-24 hr"],
     trendsD3_trends = ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"],

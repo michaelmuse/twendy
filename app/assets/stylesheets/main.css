@@ -25,7 +25,9 @@ h4 {
 }
 canvas {
   position: absolute;
-  top: -60%;
+  /*top: -60%;
+  left: -13%;*/
+  top: -70%;
   left: -13%;
   margin-top: -50px;
   margin-left: -100px;
@@ -39,11 +41,13 @@ canvas {
   height: 80px;
 }
 #country-list {
-	height: 80%;
- 	min-height:700px;
- 	overflow:hidden;
+  /*overflow: scroll;*/
+ 	/*min-height:700px;*/
+ 	/*overflow:hidden;*/
+  height: 700px;
  	overflow-y: scroll;
   font-weight: normal;
+  /*height: 800px;*/ 
 }
 #trend-list {
   line-height: 80px;
@@ -91,11 +95,7 @@ text.axis-workweek {
 text.axis-worktime {
   fill: #000;
 }
-#country-list{
-  height: 800px; 
-  overflow: scroll;
- }
- .trend-container h3 {
+.trend-container h3 {
   margin-left: 60px !important;
   width: 200px;
- }
+}

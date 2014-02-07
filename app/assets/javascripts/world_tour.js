@@ -10,7 +10,7 @@ function globus(error, world, names) {
 
 	var auto_rotate = true;
 
-	var width = height = 600,
+	var width = height = 2000,
 	    start = Date.now(),
 	    title = d3.select("h1");
 
@@ -21,10 +21,10 @@ function globus(error, world, names) {
 	var globe = {type: "Sphere"};
 	var graticule = d3.geo.graticule();
 
-	var canvas1 = d3.select(page).append("canvas"),
-	    canvas2 = d3.select(page).append("canvas").attr("class", "blur"),
-	    canvas3 = d3.select(page).append("canvas"),
-	    canvasB = d3.select(page).append("canvas").on("click", function() {alert("CLICK");});;
+	var canvas1 = d3.select("body").append("canvas"),
+	    canvas2 = d3.select("body").append("canvas").attr("class", "blur"),
+	    canvas3 = d3.select("body").append("canvas"),
+	    canvasB = d3.select("body").append("canvas").on("click", function() {alert("CLICK");});;
 
 	d3.selectAll("canvas").attr("width", width).attr("height", height);
 

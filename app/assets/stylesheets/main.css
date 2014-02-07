@@ -6,8 +6,8 @@ html {
 }
 canvas {
   position: absolute;
-  top: 19%;
-  left: 36%;
+  top: -60%;
+  left: -13%;
   margin-top: -50px;
   margin-left: -100px;
   z-index: -999;

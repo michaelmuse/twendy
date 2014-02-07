@@ -14,6 +14,9 @@ TrendsList.prototype = {
 	add: function(trend) {
 		this.trends.push(trend);
 	},
+	clear: function() {
+		this.trends = [];
+	},
 	fetch: function(country_name) {
 		var self = this;
 		$.ajax({
@@ -22,6 +25,7 @@ TrendsList.prototype = {
 			dataType: "json",
 			data: { name: country_name },
 			success: function(data) {
+				self.clear();
 				$.each(data, function(index, trend) {
 					var new_trend = new Trend(trend.name, trend.trend, trend.interval, trend.rank);
 					self.add(new_trend);

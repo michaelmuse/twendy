@@ -2,6 +2,7 @@
 ***
 An engaging visualization of global Twitter trends.
 
+![Global View](http://content.screencast.com/users/MichaelMuse/folders/Jing/media/2a8ae0fb-fccd-4058-ac91-43e84a6d6d10/00000027.png)
 
 ###App Summary###
 ***
@@ -18,20 +19,21 @@ http://twendy.herokuapp.com/
 ***
 
 * Job ordering and large data set sorting
-* Heroku tasks
+* Heroku task scheduler
 * Rspec
-* geocoder
+* Yahoo WOEID api
+* Geocoder
 * AJax
 * d3js
-* Optimizing data calls to work within rate limits
+* Optimizing data calls to maximize rate limits
 * Heavily Test Driven, at the start. 95~100% backend coverage until major refactoring day 4.
  
 ###Teamwork###
 ***
 * Pivotal tracker
 * Pair programming
-* Empathy & Understanding
-* Dedication -  We had to change location 3 times on the final night before our deadline 
+* Understanding
+* Dedication 
 
 ###Development Skill Set###
 ***
@@ -57,7 +59,3 @@ https://github.com/michaelmuse
 
 Michael Tener  
 https://github.com/mten
-
-###Screenshots###
-
-![Global View](http://content.screencast.com/users/MichaelMuse/folders/Jing/media/2a8ae0fb-fccd-4058-ac91-43e84a6d6d10/00000027.png)

@@ -9,10 +9,8 @@ h1 {
   text-align: center;
   color: hsla(15,95%,50%,1);
   font-weight: bold;
-
 }
 h3 {
-  /*margin-top: 50px;*/
   margin-left: 36px;
   color: black;
   font-weight: bold;
@@ -49,10 +47,6 @@ canvas {
 }
 #trend-list {
   line-height: 80px;
-  /*padding-top: 40px;*/
-}
-.trend-container {
-  /*margin: -40px;*/
 }
 #trend-list li {
   font-size: 18px;
@@ -61,7 +55,6 @@ canvas {
   color: hsla(15,95%,50%,1);
   margin-left: 20px;
 }
-
 #chart {
   opacity: 0;
 }
@@ -69,7 +62,6 @@ li {
 	list-style: none;
 	font-size: 18px;
 	width: 160px;
-	/*color: rgb(200,200,200);*/
   color: black;
   font-weight: bold;
 }
@@ -84,7 +76,6 @@ rect.bordered {
 
 rect.bordered:hover {
   stroke: #E6E6E6;
-  
 }
 
 text.mono {
@@ -100,3 +91,10 @@ text.axis-workweek {
 text.axis-worktime {
   fill: #000;
 }
+#country-list{
+  height: 800px; 
+  overflow: scroll;
+ }
+ .trend-container h3 {
+  margin-left: 20px;
+ }

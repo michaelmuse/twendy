@@ -41,31 +41,26 @@ function TrendsListView(){
 
 TrendsListView.prototype = { 
 	render: function(trends) {
-		
-		//$('#globus').remove();
-
-		// $div = $('div').attr({'id': 'chart'});
-		// $('#main').append($div);
 
 		var $globus = $('canvas'),
-        $chart  = $('#chart');
+        $chart  = $('#chart'),
+        $ul = $('#trend-list');
+
+    $chart.empty();
+    $temp = $ul.find('li');
+    $temp.remove();
 
 		trendsD3([],trends);
-
-		$globus.animate({}, 0, function() {
-			$chart.fadeTo(1500, 1);
-		});
+		$chart.fadeTo(1500, 1);
+		
 		var curr_trends = [];
-		trends.forEach(function(trend){
-			trend.interval === 1 ? curr_trends.push(trend.name) : console.log("item removed")
+		$.each(trends, function(index, trend) {
+			(trend.interval === 1) ? curr_trends.push(trend.name) : console.log("item removed");
 		});
-		console.log(curr_trends);
-		var $ul = $('#trend-list');
-		$ul.empty();
+
 		$.each(curr_trends, function(index, trend) {
 			var $li = $('<li>').attr({'class': 'trend'}).text(trend);
 			$ul.append($li);
-			// $('ul#country-list').empty(); // empty the country's list
 			$('#main').append($ul);
 		});
 	}

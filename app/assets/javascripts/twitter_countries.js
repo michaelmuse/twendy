@@ -46,7 +46,7 @@ TrendsListView.prototype = {
         $chart  = $('#chart'),
         $ul = $('.trend-container ul');
 
-		//$chart.fadeTo(500, 0);
+		$chart.fadeTo(500,.1);
 		$chart.empty();
 		trendsD3([],trends);
 		$chart.fadeTo(500, 1);

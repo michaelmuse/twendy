@@ -120,8 +120,16 @@ function globus(error, world, names) {
 		    .tween("rotate", function() {
 
 		    	// rotate automatically only if set to true (and pick the next country)
-		    	(auto_rotate) ? country = countries[i] : title.text(country.name);
-
+          // pry country.all to make twitter array
+          //if country(all) is in twitcountries(twitter only), keep looping the line below, if i gets above countries.length, go back to i=0
+          var twitterCountriesArr = ["Argentina","Australia","Belgium","Brazil","Canada","Chile","Colombia","Dominican Republic","Ecuador","France","Germany","Greece","Guatemala","India","Indonesia","Ireland","Italy","Japan","Kenya","Korea","Malaysia","Mexico","Netherlands","New Zealand","Nigeria","Norway","Pakistan","Peru","Philippines","Poland","Portugal","Russia","Singapore","South Africa","Spain","Sweden","Turkey","Ukraine","United Arab Emirates","United Kingdom","United States","Venezuela"];
+          var j = i - 1;
+          do {
+            (j < countries.length) ? j++ : j=0;
+  		    	(auto_rotate) ? country = countries[j] : title.text(country.name);
+          } while (twitterCountriesArr.indexOf(country.name) == -1)
+          console.log(country.name);
+          i = j;
 		      var p = d3.geo.centroid(country),
 		          r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]);
 		      

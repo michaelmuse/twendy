@@ -5,7 +5,7 @@ body {
   overflow: hidden;
 }
 h1 {
-  padding-top:40px;
+  padding-top:10px;
   text-align: center;
   color: hsla(15,95%,50%,1);
   font-weight: bold;
@@ -45,14 +45,20 @@ canvas {
  	min-height:700px;
  	overflow:hidden;
  	overflow-y: scroll;
+  font-weight: normal;
 }
 #trend-list {
   line-height: 74px;
   padding-top: 40px;
 }
-
+.trend-container {
+  margin: -40px;
+}
 #trend-list li {
-  font-size: 22px;
+  font-size: 18px;
+  margin: -8px;
+  font-weight: normal;
+  color: hsla(15,95%,50%,1);
 }
 
 #chart {

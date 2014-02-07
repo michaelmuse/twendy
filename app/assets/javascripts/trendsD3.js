@@ -137,8 +137,18 @@ var
     trendsD3_height = 880 - trendsD3_margin.top - trendsD3_margin.bottom,
     trendsD3_buckets = 10,
     // trendsD3_colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58","red"], // alternatively colorbrewer.YlGnBu[9]
-    trendsD3_colors = ["hsla(56,55%,85%,.6)","#61c4b2","#77c79f","#89ca8c","#a8b778","#c0a265","#d38b52","#dc7840","#e56230","#ef4623"], // alternatively colorbrewer.YlGnBu[9]
-    trendsD3_intervals = ["Now", "-2 hours", "-4 hr", "-6 hr", "-10 hr", "-12 hr", "-14 hr", "-16 hr", "-18 hr", "-20 hr", "-22 hr", "-24 hr"],
+    // trendsD3_colors = ["hsla(56,55%,85%,.8)","#61c4b2","#77c79f","#89ca8c","#a8b778","#c0a265","#d38b52","#dc7840","#e56230","#ef4623"], // alternatively colorbrewer.YlGnBu[9]
+trendsD3_colors = [ '#ef4623',
+  '#e56230',
+  '#dc7840',
+  '#d38b52',
+  '#c0a265',
+  '#a8b778',
+  '#89ca8c',
+  '#77c79f',
+  '#61c4b2',
+  'hsla(56,55%,85%,.8)' ];
+  trendsD3_intervals = ["Now", "-2 hours", "-4 hr", "-6 hr", "-10 hr", "-12 hr", "-14 hr", "-16 hr", "-18 hr", "-20 hr", "-22 hr", "-24 hr"],
     trendsD3_trends = ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"],
     trendsD3_gridSize = Math.floor(trendsD3_width / trendsD3_intervals.length),
     trendsD3_legendElementWidth = trendsD3_gridSize * 2;

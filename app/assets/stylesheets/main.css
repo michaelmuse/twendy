@@ -33,6 +33,7 @@ canvas {
   margin-left: -100px;
   z-index: -999;
 }
+
 .blur {
   -webkit-filter: blur(10px);
   filter: blur(10px);

@@ -60,3 +60,26 @@ li:hover {
 	color: red;
 	cursor: pointer;
 }
+rect.bordered {
+  stroke: rgb(200,200,200);
+  stroke-width:2px;
+}
+
+rect.bordered:hover {
+  stroke: #E6E6E6;
+  
+}
+
+text.mono {
+  font-size: 9pt;
+  font-family: Consolas, courier;
+  fill: #aaa;
+}
+
+text.axis-workweek {
+  fill: #000;
+}
+
+text.axis-worktime {
+  fill: #000;
+}

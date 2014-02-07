@@ -201,14 +201,13 @@ function trendsD3(error, data) {
         .enter().append("rect")
         .attr("x", function(d) { return (d.interval - 1) * gridSize; })
         .attr("y", function(d) { return (d.trend - 1) * gridSize; })
-        // .attr("rx", 4)  //MD CHANGE
-        // .attr("ry", 4)   //MD CHANGE
+        .attr("rx", 4)
+        .attr("ry", 4)
         .attr("class", "interval bordered")
-        // .attr("width", gridSize-2)
-        // .attr("height", gridSize-2)
-        .attr("width", gridSize) //MD CHANGE
-        .attr("height", gridSize) //MD CHANGE
-        .style("fill", colors[0]);
+        .attr("width", gridSize-2)
+        .attr("height", gridSize-2);
+
+    (d.rank == 0) ? heatMap.style("fill", 'orange') : heatMap.style("fill", colors[0]);
 
     heatMap.transition().duration(1400)
         .style("fill", function(d) { return colorScale(d.rank); });

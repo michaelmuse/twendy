@@ -41,16 +41,19 @@ function TrendsListView(){
 
 TrendsListView.prototype = { 
 	render: function(trends) {
-		console.dir(trends);
 		var $globus = $('canvas'),
         $chart  = $('#chart'),
         $ul = $('.trend-container ul');
 
-		$chart.fadeTo(200,.5);
+		$chart.fadeTo(200,.1);
 		$chart.empty();
-		trendsD3([],trends);
-		$chart.fadeTo(200, 1);
-		
+
+		setTimeout(function() {
+      // Do something after 4 seconds
+      trendsD3([],trends);
+			$chart.fadeTo(200, 1);
+    }, 3000);
+
 		var curr_trends = [];
 		$.each(trends, function(index, trend) {
 			if (trend.interval === 1) curr_trends.push(trend.name);

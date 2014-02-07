@@ -37,12 +37,12 @@ canvas {
  	overflow-y: scroll;
 }
 #trend-list {
-  line-height: 77px;
+  line-height: 74px;
   padding-top: 40px;
 }
 
 #trend-list li {
-  font-size: 28px;
+  font-size: 22px;
 }
 
 #chart {

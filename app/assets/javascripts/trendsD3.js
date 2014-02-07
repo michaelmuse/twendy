@@ -132,7 +132,7 @@
 //  ];
 
 
-var color1 = "hsla(120,100%,0%"
+var color1 = "hsla(360,0%,100%"
 
 
 var 

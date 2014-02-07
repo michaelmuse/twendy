@@ -25,13 +25,18 @@ canvas {
  	overflow:hidden;
  	overflow-y: scroll;
 }
-.trend-list {
-  line-height: 5;
+#trend-list {
+  line-height: 77px;
+  padding-top: 40px;
 }
+
+#trend-list li {
+  font-size: 28px;
+}
+
 #chart {
   opacity: 0;
 }
-
 li {
 	list-style: none;
 	font-size: 18px;

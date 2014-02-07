@@ -6,7 +6,12 @@ body {
 }
 h1 {
   text-align: center;
+  color: red;
 }
+h3 {
+  margin-left: 36px;
+}
+
 #globus {
 	position: relative;
 }
@@ -32,12 +37,12 @@ canvas {
  	overflow-y: scroll;
 }
 #trend-list {
-  line-height: 77px;
+  line-height: 74px;
   padding-top: 40px;
 }
 
 #trend-list li {
-  font-size: 28px;
+  font-size: 22px;
 }
 
 #chart {
@@ -47,7 +52,8 @@ li {
 	list-style: none;
 	font-size: 18px;
 	width: 160px;
-	color: rgb(200,200,200);
+	/*color: rgb(200,200,200);*/
+  color: black;
 }
 li:hover {
 	color: red;

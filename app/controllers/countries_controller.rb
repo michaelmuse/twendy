@@ -58,7 +58,7 @@ class CountriesController < ApplicationController
       @all_intervals.push(lte.time_of_trend)
     end
     @all_intervals.sort!.uniq!
-    # @all_intervals.reverse!
+    @all_intervals.reverse!
 
     # For each trend given an interval make an array of trend_name, trend_index, rank, time
     def makeCurrTrendsLines(interval)
@@ -138,6 +138,7 @@ class CountriesController < ApplicationController
 		respond_to do |format|
       format.html
       format.json { render :json => @alllines.flatten.to_json }
+      puts "#{@alllines}"
     end
 	end
 

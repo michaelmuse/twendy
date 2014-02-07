@@ -142,6 +142,7 @@ var trendsD3_margin = { top: 50, right: 0, bottom: 100, left: 50 },
     trendsD3_legendElementWidth = trendsD3_gridSize * 2;
 
 function trendsD3(error, data) {
+
     var d = data,
         margin = trendsD3_margin,
         width = trendsD3_width,
@@ -152,6 +153,8 @@ function trendsD3(error, data) {
         trends = trendsD3_trends,
         gridSize = trendsD3_gridSize,
         legendElementWidth = trendsD3_legendElementWidth;
+
+    console.dir(data);
 
     var colorScale = d3.scale.quantile()
         .domain([0, buckets - 1, d3.max(data, function (d) { return d.rank; })])

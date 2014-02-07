@@ -48,16 +48,16 @@ canvas {
   font-weight: normal;
 }
 #trend-list {
-  line-height: 74px;
-  padding-top: 40px;
+  line-height: 80px;
+  /*padding-top: 40px;*/
 }
 .trend-container {
-  margin: -40px;
+  /*margin: -40px;*/
 }
 #trend-list li {
   font-size: 18px;
   margin: -8px;
-  font-weight: normal;
+  font-weight: bold;
   color: hsla(15,95%,50%,1);
 }
 

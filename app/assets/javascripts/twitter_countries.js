@@ -130,7 +130,4 @@ CountriesListView.prototype = {
 
 $(function() {
   new CountriesListView;
-  $('#country').on('click', function() {
-  	new CountriesListView;
-  });
 });

@@ -145,9 +145,7 @@ var
 
 function trendsD3(error, data) {
 
-    data = trendsD3_result.shuffle();
-
-    var d = data,
+    var d = shuffle(trendsD3_result),
         margin = trendsD3_margin,
         width = trendsD3_width,
         height = trendsD3_height,

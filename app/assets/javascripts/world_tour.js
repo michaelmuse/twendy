@@ -9,7 +9,7 @@ function shuffle(arr) {
 
 function globus(error, world, names) {
 
-	var width = height = 2000,
+	var width = height = 2500,
 	    start = Date.now(),
 	    title = d3.select("h1");
 

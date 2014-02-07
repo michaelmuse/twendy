@@ -46,10 +46,10 @@ TrendsListView.prototype = {
         $chart  = $('#chart'),
         $ul = $('.trend-container ul');
 
-		$chart.fadeTo(500,.1);
+		$chart.fadeTo(200,.5);
 		$chart.empty();
 		trendsD3([],trends);
-		$chart.fadeTo(500, 1);
+		$chart.fadeTo(200, 1);
 		
 		var curr_trends = [];
 		$.each(trends, function(index, trend) {

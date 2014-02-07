@@ -47,12 +47,13 @@ TrendsListView.prototype = {
         $ul = $('.trend-container ul');
 
 		trendsD3([],trends);
+
 		$chart.fadeTo(500, 0);
 		$chart.fadeTo(500, 1);
 		
 		var curr_trends = [];
 		$.each(trends, function(index, trend) {
-			(trend.interval === 1) ? curr_trends.push(trend.name) : console.log("item removed");
+			if (trend.interval === 1) curr_trends.push(trend.name);
 		});
 		curr_trends = curr_trends.slice(-10,-1);
 

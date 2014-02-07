@@ -5,11 +5,20 @@ body {
   overflow: hidden;
 }
 h1 {
+  padding-top:40px;
   text-align: center;
-  color: red;
+  color: hsla(15,95%,50%,1);
+  font-weight: bold;
+
 }
 h3 {
+  /*margin-top: 50px;*/
   margin-left: 36px;
+  color: black;
+  font-weight: bold;
+}
+h4 {
+  margin-left: 56px;
   color: black;
 }
 
@@ -25,11 +34,11 @@ canvas {
   z-index: -999;
 }
 .blur {
-  -webkit-filter: blur(6px);
-  filter: blur(6px);
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
 }
 .header-container {
-  height: 100px;
+  height: 80px;
 }
 #country-list {
 	height:100%;
@@ -55,9 +64,10 @@ li {
 	width: 160px;
 	/*color: rgb(200,200,200);*/
   color: black;
+  font-weight: bold;
 }
 li:hover {
-	color: red;
+	color: hsla(15,95%,50%,1);
 	cursor: pointer;
 }
 rect.bordered {
@@ -73,7 +83,7 @@ rect.bordered:hover {
 text.mono {
   font-size: 9pt;
   font-family: Consolas, courier;
-  fill: #aaa;
+  fill: #000;
 }
 
 text.axis-workweek {

@@ -22,8 +22,9 @@ function globus(error, world, names) {
 	var graticule = d3.geo.graticule();
 
 	var canvas1 = d3.select("body").append("canvas"),
+      canvas2 = d3.select("body").append("canvas").attr("class", "blur"), //drop shadow
       // canvas2 = d3.select("body").append("canvas").attr("class", "blur"), //drop shadow
-      canvas2 = d3.select("body").append("canvas").style('opacity', 0), //drop shadow
+      // canvas2 = d3.select("body").append("canvas").style('opacity', 0), //drop shadow
 	    canvas3 = d3.select("body").append("canvas"),
 	    canvasB = d3.select("body").append("canvas").on("click", function() {alert("CLICK");});;
 
@@ -47,7 +48,8 @@ function globus(error, world, names) {
 	grd = context1.createLinearGradient(0, 0, 760, 760);
 	grd.addColorStop(0, "rgba(84,145,203,.3)");   
   // grd.addColorStop(1, "rgba(84,145,203,1)");
-	grd.addColorStop(1, "hsla(208,43%,80%,1)"); //water
+  // grd.addColorStop(1, "hsla(208,43%,80%,1)"); //water
+	grd.addColorStop(1, "hsla(160,23%,80%,1)"); //water - teal
 
   projection.scale(width / 2.3).clipAngle(90);
 
@@ -61,10 +63,11 @@ function globus(error, world, names) {
   context1.fill();
 
   // land shadow
-  context2.fillStyle = "rgba(0,0,0,.4)";
+  // context2.fillStyle = "rgba(0,0,0,.4)";
+  context2.fillStyle = "rgba(0,0,0,.07)";
 
   // globe's cordinate lines
-  context3.strokeStyle = "rgba(0,0,0,.1)";
+  context3.strokeStyle = "rgba(255,255,255,.5)";
 
   d3.json("world-110m.json", function(error, topo) {
     var land = topojson.feature(world, world.objects.land),
@@ -157,7 +160,7 @@ function globus(error, world, names) {
 		          // land inner color
 		          context3.beginPath();
 		          path(land);
-		          context3.fillStyle = "#737368";
+		          // context3.fillStyle = "#737368";
 		          context3.fill();
 
 		          projection.scale(width / 2.2).clipAngle(90);
@@ -165,14 +168,15 @@ function globus(error, world, names) {
 		          // land color
 		          context3.beginPath();
 		          path(land);
-		          context3.fillStyle = "#dadac4";
+		          context3.fillStyle = "hsla(56,55%,85%,1)";
 		          context3.fill();
 
 		          contextB.clearRect(0, 0, width, height);
 		          // selected country
-		          contextB.fillStyle = "red", contextB.beginPath(), pathB(country), contextB.fill();
+		          contextB.fillStyle = "hsla(15,95%,50%,1)", contextB.beginPath(), pathB(country), contextB.fill();
 		          // country's borders
-		          contextB.strokeStyle = "#fff", contextB.lineWidth = .5, contextB.beginPath(), pathB(borders), contextB.stroke();
+              // contextB.strokeStyle = "#fff", contextB.lineWidth = .5, contextB.beginPath(), pathB(borders), contextB.stroke();
+		          contextB.strokeStyle = "#fff", contextB.lineWidth = .5, contextB.beginPath(), pathB(borders), contextB.stroke(); //country borders
 					};
 		    })
 		  	.transition()

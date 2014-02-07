@@ -141,8 +141,9 @@ var
     trendsD3_width = 880 - trendsD3_margin.left - trendsD3_margin.right,
     trendsD3_height = 880 - trendsD3_margin.top - trendsD3_margin.bottom,
     trendsD3_buckets = 10,
-    trendsD3_colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58","red"], // alternatively colorbrewer.YlGnBu[9]
-    trendsD3_intervals = ["2 Hours", "4 Hours", "6 Hours", "8 Hours", "10 Hours", "12 Hours", "14 Hours", "16 Hours", "18 Hours", "20 Hours", "22 Hours", "24 Hours"],
+    // trendsD3_colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58","red"], // alternatively colorbrewer.YlGnBu[9]
+    trendsD3_colors = ["hsla(56,55%,85%,.6)","#61c4b2","#77c79f","#89ca8c","#a8b778","#c0a265","#d38b52","#dc7840","#e56230","#ef4623"], // alternatively colorbrewer.YlGnBu[9]
+    trendsD3_intervals = ["Now", "-2 hours", "-4 hr", "-6 hr", "-10 hr", "-12 hr", "-14 hr", "-16 hr", "-18 hr", "-20 hr", "-22 hr", "-24 hr"],
     trendsD3_trends = ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"],
     trendsD3_gridSize = Math.floor(trendsD3_width / trendsD3_intervals.length),
     trendsD3_legendElementWidth = trendsD3_gridSize * 2;
@@ -203,7 +204,7 @@ function trendsD3(error, data) {
         .attr("y", function(d) { return (d.trend - 1) * gridSize; })
         .attr("rx", 4)
         .attr("ry", 4)
-        .attr("class", "interval bordered")
+        // .attr("class", "interval bordered")
         .attr("width", gridSize-2)
         .attr("height", gridSize-2);
 
@@ -229,7 +230,7 @@ function trendsD3(error, data) {
 
     legend.append("text")
       .attr("class", "mono")
-      .text(function(d, i) { return "≥ " + Math.round(i); })
+      .text(function(d, i) { return "rank ≥ " + Math.round(i); })
       .attr("x", function(d, i) { return legendElementWidth * i; })
       .attr("y", height + gridSize);
 }

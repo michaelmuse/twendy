@@ -154,8 +154,8 @@ trendsD3_colors = [ '#ef4623',
     trendsD3_legendElementWidth = trendsD3_gridSize * 2;
 
 function trendsD3(error, data) {
-
-    var d = shuffle(trendsD3_result),
+    // shuffle(trendsD3_result)
+    var d = data,
         margin = trendsD3_margin,
         width = trendsD3_width,
         height = trendsD3_height,

@@ -96,5 +96,6 @@ text.axis-worktime {
   overflow: scroll;
  }
  .trend-container h3 {
-  margin-left: 20px;
+  margin-left: 60px !important;
+  width: 200px;
  }

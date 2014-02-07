@@ -43,9 +43,9 @@ function globus(error, world, names) {
 
 	// background-color of the globe
 	var grd = "white";
-	// grd = context1.createLinearGradient(0, 0, 760, 760);
-	// grd.addColorStop(0, "rgba(84,145,203,.3)");   
-	// grd.addColorStop(1, "rgba(84,145,203,1)");
+	grd = context1.createLinearGradient(0, 0, 760, 760);
+	grd.addColorStop(0, "rgba(84,145,203,.3)");   
+	grd.addColorStop(1, "rgba(84,145,203,1)");
 
   projection.scale(width / 2.3).clipAngle(90);
 

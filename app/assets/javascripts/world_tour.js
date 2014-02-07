@@ -22,7 +22,8 @@ function globus(error, world, names) {
 	var graticule = d3.geo.graticule();
 
 	var canvas1 = d3.select("body").append("canvas"),
-	    canvas2 = d3.select("body").append("canvas").attr("class", "blur"),
+      // canvas2 = d3.select("body").append("canvas").attr("class", "blur"), //drop shadow
+      canvas2 = d3.select("body").append("canvas").style('opacity', 0), //drop shadow
 	    canvas3 = d3.select("body").append("canvas"),
 	    canvasB = d3.select("body").append("canvas").on("click", function() {alert("CLICK");});;
 
@@ -45,7 +46,8 @@ function globus(error, world, names) {
 	var grd = "white";
 	grd = context1.createLinearGradient(0, 0, 760, 760);
 	grd.addColorStop(0, "rgba(84,145,203,.3)");   
-	grd.addColorStop(1, "rgba(84,145,203,1)");
+  // grd.addColorStop(1, "rgba(84,145,203,1)");
+	grd.addColorStop(1, "hsla(208,43%,80%,1)"); //water
 
   projection.scale(width / 2.3).clipAngle(90);
 
@@ -54,6 +56,7 @@ function globus(error, world, names) {
   context1.lineWidth = 1;
   context1.strokeStyle = "rgba(0,0,0,.5)"; // line around the globe
   context1.stroke();
+  // context1.fillStyle = grd;  // filling globe color
   context1.fillStyle = grd;  // filling globe color
   context1.fill();
 

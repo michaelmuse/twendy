@@ -11,47 +11,6 @@
  *= require_self
  *= require bootstrap.min.css
  *= require bootstrap-theme.min.css
+ *= require main.css
  *= require_tree .
  */
-
-html {
-	background: rgb(40,40,40);
-}
-#globus {
-	position: relative;
-}
-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.blur {
-  -webkit-filter: blur(6px);
-  filter: blur(6px);
-}
-ul {
-	position: absolute;
-}
-li {
-	list-style: none;
-	font-size: 18px;
-	width: 160px;
-	color: rgb(200,200,200);
-}
-li:hover {
-	color: red;
-	cursor: pointer;
-}
-.trends-list {
-	float: right;
-}
-
-/* classes */
-
-.centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-top: -50px;
-  margin-left: -100px;
-}

@@ -59,6 +59,7 @@ canvas {
   margin: -8px;
   font-weight: bold;
   color: hsla(15,95%,50%,1);
+  margin-left: 20px;
 }
 
 #chart {

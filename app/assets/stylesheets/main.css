@@ -27,7 +27,7 @@ canvas {
   position: absolute;
   /*top: -60%;
   left: -13%;*/
-  top: -70%;
+  top: -60%;
   left: -13%;
   margin-top: -50px;
   margin-left: -100px;
@@ -99,4 +99,7 @@ text.axis-worktime {
 .trend-container h3 {
   margin-left: 60px !important;
   width: 200px;
+}
+#tranding-now {
+  display: none;
 }

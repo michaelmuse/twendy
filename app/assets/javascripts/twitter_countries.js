@@ -62,6 +62,7 @@ TrendsListView.prototype = {
 			var $li = $('<li>').attr({'class': 'trend'}).text(trend);
 			$ul.append($li);
 		});
+		$('#tranding-now').css({'display': 'block'});
 	}
 }
 

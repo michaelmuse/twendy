@@ -138,6 +138,7 @@ class CountriesController < ApplicationController
 		respond_to do |format|
       format.html
       format.json { render :json => @alllines.flatten.to_json }
+      puts "#{@alllines}"
     end
 	end
 

@@ -168,7 +168,7 @@ function globus(error, world, names) {
 		          // land color
 		          context3.beginPath();
 		          path(land);
-		          context3.fillStyle = "hsla(56,55%,85%,1)";
+		          context3.fillStyle = "hsla(56,40%,85%,1)";
 		          context3.fill();
 
 		          contextB.clearRect(0, 0, width, height);

@@ -56,7 +56,7 @@ TrendsListView.prototype = {
 		$div = $('div').attr({'id': 'chart'});
 		$('#main').append($div);
 
-		trendsD3([],trendsD3_result);
+		trendsD3([],trends);
 	}
 }
 
